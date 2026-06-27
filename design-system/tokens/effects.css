@@ -1,0 +1,45 @@
+/* ============================================================
+   Gilt & Grove — Effects: radii, borders, shadows, motion
+   The Deco half of the brand stays angular (near-sharp corners,
+   crisp gold rules); the Celtic knotwork adds soft glow and slow,
+   graceful motion. No bounce, no rounded "app" cards.
+   ============================================================ */
+
+:root {
+  /* ---- Corner radii (kept tight & architectural) ---- */
+  --radius-none: 0px;
+  --radius-xs: 1px;
+  --radius-sm: 2px;
+  --radius-md: 3px;     /* default — barely there */
+  --radius-pill: 999px; /* only for true pills / chips */
+
+  /* ---- Border widths ---- */
+  --border-hair: 1px;
+  --border-rule: 1.5px;
+  --border-frame: 2px;
+
+  /* ---- Gold rules (the signature linework) ---- */
+  --rule-gold: var(--border-hair) solid var(--line);
+  --rule-gold-strong: var(--border-rule) solid var(--line-strong);
+  --rule-soft: var(--border-hair) solid var(--line-soft);
+
+  /* ---- Shadows: deep, soft, near-black on dark grounds ---- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.58);
+  --shadow-inset: inset 0 1px 0 rgba(244, 239, 227, 0.05);
+
+  /* ---- Gilt glow (warm accent halo for emphasis/focus) ---- */
+  --glow-gold: 0 0 0 1px rgba(194, 160, 66, 0.35), 0 8px 30px rgba(194, 160, 66, 0.12);
+  --glow-gold-strong: 0 0 0 1px rgba(216, 188, 107, 0.6), 0 10px 36px rgba(194, 160, 66, 0.22);
+
+  /* ---- Motion: slow, graceful, no overshoot ---- */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --dur-fast: 160ms; /* @kind other */
+  --dur-base: 260ms; /* @kind other */
+  --dur-slow: 440ms; /* @kind other */
+  --dur-veil: 700ms; /* @kind other */
+
+  --transition-base: all var(--dur-base) var(--ease-out); /* @kind other */
+}

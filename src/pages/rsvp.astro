@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import monogram from '../../design-system/assets/monogram.svg?raw';
+import { archBraid } from '../lib/knots.mjs';
+const arch = archBraid(820, 360);
+---
+
+<Layout title="RSVP — Warren & Carson" description="Reply to Warren and Carson's wedding, the nineteenth of September, 2026, in Rehoboth, Massachusetts.">
+  <main id="main" class="rsvp-page">
+    <svg class="rsvp-page__halo" aria-hidden="true" viewBox={arch.viewBox} preserveAspectRatio="xMidYMid meet" set:html={arch.svg}></svg>
+    <section class="rsvp-page__inner container--sm">
+      <a class="rsvp-page__monogram" href="/" aria-label="Warren and Carson — home" set:html={monogram} />
+
+      <p class="eyebrow rsvp-page__eyebrow">The Reply</p>
+      <h1 class="rsvp-page__title">Joyfully Accepts, <span>or</span> Regretfully Declines</h1>
+      <p class="rsvp-page__body">
+        Our reply form is being set with the same care as the table. It opens soon — when it
+        does, you&rsquo;ll answer for your party in under a minute, right here.
+      </p>
+
+      <div class="rsvp-page__card gg-card gg-card--parchment">
+        <p class="rsvp-page__card-eyebrow">Save the moment</p>
+        <p class="rsvp-page__card-date">
+          <time datetime="2026-09-19">Saturday · 19 September 2026</time>
+        </p>
+        <p class="rsvp-page__card-place">Rehoboth, Massachusetts</p>
+        <p class="rsvp-page__card-note">Kindly reply by the first of August, 2026.</p>
+      </div>
+
+      <a class="gg-btn" data-variant="outline" href="/">Return to the invitation</a>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .rsvp-page {
+    position: relative;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding-block: clamp(var(--space-8), 14vh, var(--space-10));
+    overflow: hidden;
+  }
+  .rsvp-page__halo {
+    position: absolute;
+    top: clamp(2%, 4vh, 8%);
+    left: 50%;
+    width: min(96%, 680px);
+    height: auto;
+    transform: translateX(-50%);
+    opacity: 0.9;
+    overflow: visible;
+    pointer-events: none;
+    filter: drop-shadow(0 0 22px rgba(194, 160, 66, 0.14));
+  }
+
+  .rsvp-page__inner { position: relative; z-index: 1; text-align: center; }
+  .rsvp-page__monogram {
+    display: block;
+    width: 96px; height: 96px;
+    margin: 0 auto var(--space-6);
+  }
+  .rsvp-page__monogram :global(svg) { display: block; width: 100%; height: 100%; }
+  .rsvp-page__eyebrow { color: var(--gold-300); }
+
+  .rsvp-page__title {
+    font-size: var(--fs-h1);
+    text-wrap: balance;
+    margin-bottom: var(--space-5);
+  }
+  .rsvp-page__title span { color: var(--gold-400); font-family: var(--font-ornament); font-size: 0.7em; }
+
+  .rsvp-page__body {
+    color: var(--text-muted);
+    font-size: var(--fs-body-lg);
+    max-width: 50ch;
+    margin: 0 auto var(--space-7);
+  }
+
+  .rsvp-page__card { text-align: center; margin: 0 auto var(--space-7); max-width: 460px; }
+  .rsvp-page__card-eyebrow {
+    font-family: var(--font-deco);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--rose-500);
+    margin: 0 0 var(--space-3);
+  }
+  .rsvp-page__card-date {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-900);
+  }
+  .rsvp-page__card-place {
+    margin: var(--space-2) 0 0;
+    font-family: var(--font-deco);
+    font-size: 12.5px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--green-600);
+  }
+  .rsvp-page__card-note { margin: var(--space-4) 0 0; font-style: italic; color: var(--ink-700); }
+</style>

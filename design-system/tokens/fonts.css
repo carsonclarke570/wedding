@@ -1,0 +1,53 @@
+/* ============================================================
+   Gilt & Grove — Webfonts
+   Three faces (a deliberate, tight pairing):
+     · Uncial Antiqua     — Celtic insular display: the couple's names + ceremonial titles
+     · Cinzel             — inscriptional Roman caps: headings, labels, nav (carved, substantial)
+     · Cormorant Garamond — high-contrast serif: warm body copy
+
+   Poiret One (thin geometric Deco) and Cinzel Decorative were retired: the
+   Deco label voice read thin and un-Celtic, so labels moved to Cinzel and the
+   overtly Celtic voice is now carried by Uncial Antiqua + the knotwork engine.
+
+   Two layers, on purpose:
+   1. The @import below loads the faces from Google's CDN.
+   2. The explicit @font-face blocks DECLARE the families inside the design
+      system itself (so they register in the manifest).
+
+   ── To go fully offline / self-hosted ──────────────────────
+   Download the .woff2 files from fonts.google.com into `assets/fonts/`,
+   swap each `src: local(...)` for `src: url('../assets/fonts/<file>.woff2')`,
+   and delete the @import. Nothing else changes.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Uncial+Antiqua&display=swap');
+
+/* ---- Family registrations (swap `local(...)` for `url(...)` to self-host) ---- */
+@font-face {
+  font-family: 'Uncial Antiqua';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Uncial Antiqua');
+}
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: local('Cinzel');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: local('Cormorant Garamond');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400 500;
+  font-display: swap;
+  src: local('Cormorant Garamond Italic');
+}

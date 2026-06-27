@@ -1,0 +1,62 @@
+---
+import { triquetra } from '../lib/knots.mjs';
+// Registry — Carson leads (rose). Real retailer links swap in for the
+// placeholder button once the registry is live.
+const crest = triquetra({ size: 42, stroke: 'var(--metal)', gap: 'var(--ink-800)' });
+---
+
+<section id="registry" class="section registry" data-lead="rose" aria-labelledby="registry-title">
+  <div class="container--sm registry__inner" data-reveal>
+    <div class="registry__crest" aria-hidden="true" set:html={crest}></div>
+    <p class="eyebrow">Registry</p>
+    <h2 id="registry-title">Your presence is the gift</h2>
+    <p class="registry__body">
+      Truly — the whole point is to have you in the room. Should you wish to mark the
+      occasion with something more, a registry is being put together (alphabetized,
+      contentiously) and will appear here well before the day.
+    </p>
+
+    <div class="registry__rule" aria-hidden="true">
+      <span></span><i></i><span></span>
+    </div>
+
+    <a class="gg-btn" data-variant="rose" href="#rsvp" aria-disabled="false">
+      Registry — coming soon
+    </a>
+    <p class="registry__note">For now, the kindest thing you can do is say you&rsquo;ll come.</p>
+  </div>
+</section>
+
+<style>
+  .registry__inner { text-align: center; }
+  .registry__crest { display: flex; justify-content: center; margin-bottom: var(--space-4); }
+  .registry__body {
+    color: var(--text-muted);
+    font-size: var(--fs-body-lg);
+    max-width: 54ch;
+    margin-inline: auto;
+  }
+  .registry__rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    margin: var(--space-6) auto var(--space-6);
+    width: 200px;
+  }
+  .registry__rule span { flex: 1; height: 1px; }
+  .registry__rule span:first-child { background: linear-gradient(90deg, transparent, var(--rose-400)); }
+  .registry__rule span:last-child { background: linear-gradient(90deg, var(--green-400), transparent); }
+  .registry__rule i {
+    width: 8px; height: 8px;
+    transform: rotate(45deg);
+    background: var(--gold-400);
+    box-shadow: 0 0 0 4px rgba(194, 160, 66, 0.14);
+  }
+  .registry__note {
+    margin-top: var(--space-5);
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-soft);
+  }
+</style>

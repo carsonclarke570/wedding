@@ -1,0 +1,15 @@
+# ── OS / editor cruft ───────────────────────────────────────
+.DS_Store
+*.log
+Thumbs.db
+
+# ── Build artifacts / dependencies (once a stack is chosen) ──
+node_modules/
+dist/
+build/
+.next/
+.cache/
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local

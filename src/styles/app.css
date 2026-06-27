@@ -1,0 +1,350 @@
+/* ============================================================
+   Warren & Carson — application stylesheet
+   Pulls in the Gilt & Grove design system (the source of truth in
+   /design-system) and adds the app-level layer the site needs:
+   component bases the system documents but ships only states for
+   (button / card / chip), page layout, nav, footer, and motion.
+   ============================================================ */
+
+@import url('../../design-system/styles.css');
+
+/* ---- App tokens: z-index scale + the lattice texture ---- */
+:root {
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-nav-menu: 200;
+  --z-overlay: 300;
+
+  --nav-h: 76px;
+
+  /* Per-section "lead" — the equal-billing system. Sections set
+     data-lead="green|rose" and everything accent-tinted reads these. */
+  --lead: var(--green-400);
+  --lead-strong: var(--green-300);
+  --lead-line: var(--line-green);
+}
+
+[data-lead='green'] {
+  --lead: var(--green-400);
+  --lead-strong: var(--green-300);
+  --lead-line: var(--line-green);
+}
+[data-lead='rose'] {
+  --lead: var(--rose-400);
+  --lead-strong: var(--rose-300);
+  --lead-line: var(--line-rose);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  position: relative;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* Faint full-page Celtic lattice — the woven plait at ~4%, fixed so it
+   reads as a material the page sits on, not a tiled wallpaper. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-base);
+  pointer-events: none;
+  background-image: url('../../design-system/assets/pattern-tile.svg');
+  background-size: 520px;
+  opacity: 0.028;
+}
+
+/* A slow candle-warmth pooled at the top, behind the hero. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 90vh;
+  z-index: var(--z-base);
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(194, 160, 66, 0.10), transparent 60%),
+    radial-gradient(80% 60% at 12% 0%, rgba(86, 104, 79, 0.12), transparent 55%),
+    radial-gradient(80% 60% at 88% 0%, rgba(147, 83, 74, 0.12), transparent 55%);
+}
+
+main { position: relative; z-index: var(--z-raised); }
+
+/* ---- Layout primitives ---- */
+.container,
+.container--md,
+.container--sm {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container { max-width: var(--container-lg); }
+.container--md { max-width: var(--container-md); }
+.container--sm { max-width: var(--container-sm); }
+
+.section {
+  position: relative;
+  padding-block: clamp(var(--space-8), 11vw, var(--section-y));
+}
+
+.section__head {
+  max-width: 46ch;
+  margin-inline: auto;
+  text-align: center;
+  margin-bottom: var(--space-7);
+}
+.section__head p {
+  color: var(--text-muted);
+  font-size: var(--fs-body-lg);
+}
+
+.eyebrow {
+  font-family: var(--font-deco);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--lead-strong);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.eyebrow::before,
+.eyebrow::after {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* The ornamental rule (green⟷rose hairline + centered gold diamond),
+   reusable wherever sections meet. */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 260px;
+  margin: var(--space-6) auto 0;
+}
+.rule::before,
+.rule::after { content: ''; flex: 1; height: 1px; }
+.rule::before { background: linear-gradient(90deg, transparent, var(--green-400)); }
+.rule::after { background: linear-gradient(90deg, var(--rose-400), transparent); }
+.rule__gem {
+  width: 8px; height: 8px;
+  flex: 0 0 auto;
+  transform: rotate(45deg);
+  background: var(--gold-400);
+  box-shadow: 0 0 0 4px rgba(194, 160, 66, 0.14);
+}
+
+/* ============================================================
+   Buttons — base styles (the system ships only :hover/:focus
+   states in components.css; the React primitive's base lived in
+   the cloud kit, so it's authored here to match the tokens).
+   ============================================================ */
+.gg-btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--parchment-100);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 15px var(--space-6);
+  min-height: 52px;
+  font-family: var(--font-deco);
+  font-size: 14px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out),
+              background-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.gg-btn--sm { min-height: 42px; padding: 10px var(--space-5); font-size: 12.5px; }
+
+/* The duo gradient is a fine metallic TIE, not a fill: flat deep ground with
+   the green→gold→garnet gradient only as the border (matches Button.jsx). */
+.gg-btn[data-variant='duo'] {
+  --btn-fg: var(--parchment-100);
+  background: linear-gradient(var(--ink-600), var(--ink-600)) padding-box,
+              var(--duo-line) border-box;
+  border: 1.5px solid transparent;
+  font-weight: var(--fw-semibold);
+  box-shadow: var(--shadow-sm);
+}
+.gg-btn[data-variant='green'] { --btn-fg: var(--parchment-100); background: var(--green-500); }
+.gg-btn[data-variant='rose']  { --btn-fg: var(--parchment-100); background: var(--rose-500); }
+.gg-btn[data-variant='gold']  { --btn-fg: var(--ink-900); background: var(--gilt-sheen); font-weight: var(--fw-semibold); }
+.gg-btn[data-variant='outline'] { border-color: var(--line-strong); color: var(--parchment-100); }
+.gg-btn[data-variant='ghost'] { color: var(--lead-strong); padding-inline: var(--space-3); }
+
+/* ============================================================
+   Cards — dark + parchment flavors (states in components.css).
+   ============================================================ */
+.gg-card {
+  background: var(--surface-card);
+  border: 1px solid var(--line-gold);
+  border-radius: var(--radius-md);
+  padding: clamp(var(--space-5), 4vw, var(--space-7));
+  box-shadow: var(--shadow-md);
+}
+.gg-card--parchment {
+  background: var(--parchment-100);
+  border-color: var(--gold-600);
+  color: var(--ink-700);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---- Status chips (tracked caps, tinted fill keyed to a tone) ---- */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 7px 14px;
+  font-family: var(--font-deco);
+  font-size: 12px;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--parchment-200);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.25);
+}
+.chip::before {
+  content: '';
+  width: 6px; height: 6px;
+  transform: rotate(45deg);
+  background: var(--gold-400);
+}
+.chip[data-tone='green']::before { background: var(--green-300); }
+.chip[data-tone='rose']::before { background: var(--rose-300); }
+
+/* ---- Deco-framed photo slot (until real photography lands) ---- */
+.photo-slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--line-gold);
+  border-radius: var(--radius-sm);
+  background:
+    radial-gradient(120% 90% at 30% 15%, rgba(86, 104, 79, 0.28), transparent 60%),
+    radial-gradient(120% 90% at 80% 90%, rgba(147, 83, 74, 0.26), transparent 60%),
+    var(--ink-600);
+  overflow: hidden;
+  isolation: isolate;
+}
+.photo-slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../../design-system/assets/pattern-tile.svg');
+  background-size: 200px;
+  opacity: 0.09;
+}
+.photo-slot::after {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border: 1px solid var(--line-soft);
+  pointer-events: none;
+}
+.photo-slot__caption {
+  position: relative;
+  font-family: var(--font-deco);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--text-soft);
+  text-align: center;
+  padding: var(--space-4);
+}
+.photo-slot__caption .mark {
+  display: block;
+  font-size: 18px;
+  color: var(--gold-400);
+  margin-bottom: var(--space-2);
+}
+
+/* ============================================================
+   Motion — hero veil reveal (CSS-only, runs on load) and
+   scroll-driven section reveals (progressive enhancement:
+   content is fully visible without support or with reduced motion).
+   ============================================================ */
+@keyframes veil-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes veil-bloom {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes draw-rule {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes gem-glint {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; filter: drop-shadow(0 0 6px rgba(216, 188, 107, 0.55)); }
+}
+
+/* Scroll-driven reveal: only when the browser supports view timelines AND
+   the user accepts motion. Transform-only on purpose — opacity stays 1 so a
+   headless renderer or crawler where the view-timeline never advances still
+   shows fully-visible content (worst case: an 18px offset), never a blank
+   section. The reveal enhances an already-visible default. */
+@keyframes reveal-rise {
+  from { transform: translateY(18px); }
+  to   { transform: none; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 24%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

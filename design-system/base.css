@@ -1,0 +1,99 @@
+/* ============================================================
+   Gilt & Grove — Base element defaults + ornament utilities
+   Imported by styles.css after the tokens. Keeps consumer pages
+   on-brand by default and provides the signature Deco/Celtic
+   framing helpers used across cards, components and UI kits.
+   ============================================================ */
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text-body);
+  font: var(--text-body-role);
+  letter-spacing: var(--ls-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 var(--space-4);
+  color: var(--text-heading);
+  font-weight: var(--fw-semibold);
+  text-wrap: balance;
+}
+h1 { font: var(--text-h1); letter-spacing: var(--ls-display); }
+h2 { font: var(--text-h2); letter-spacing: var(--ls-display); }
+h3 { font: var(--text-h3); }
+h4 { font: var(--text-h4); }
+
+p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+
+a {
+  color: var(--accent-strong);
+  text-decoration: none;
+  transition: color var(--dur-base) var(--ease-out);
+}
+a:hover { color: var(--accent-rose-strong); }
+
+::selection { background: var(--green-700); color: var(--parchment-100); }
+
+/* ---- Eyebrow: wide-tracked Deco label ---- */
+.gg-eyebrow {
+  font-family: var(--font-deco);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent-strong);   /* lighter green — AA at eyebrow size */
+  display: inline-block;
+}
+
+/* ---- Ornamental rule: green⟷rose hairline with a centered gold tie ---- */
+.gg-rule {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.gg-rule::before,
+.gg-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+.gg-rule::before { background: linear-gradient(90deg, transparent, var(--green-400)); }
+.gg-rule::after { background: linear-gradient(90deg, var(--rose-400), transparent); }
+.gg-rule__diamond {
+  width: 7px; height: 7px;
+  transform: rotate(45deg);
+  background: var(--metal);
+  box-shadow: 0 0 0 3px rgba(194, 160, 66, 0.18);
+}
+
+/* ---- Deco corner frame: double rule with cut/notched corners ---- */
+.gg-frame {
+  position: relative;
+  border: var(--rule-gold);
+  padding: var(--space-6);
+}
+.gg-frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--line-soft);
+  pointer-events: none;
+}
+
+/* ---- Gilt foil text (metallic sheen on titling) ---- */
+.gg-gilt {
+  background: var(--gilt-sheen);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Duo foil text — green⟷rose, the couple's signature treatment ---- */
+.gg-duo {
+  background: var(--duo-sheen);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

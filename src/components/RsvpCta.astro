@@ -1,0 +1,59 @@
+---
+import Frame from './Frame.astro';
+---
+
+<section id="rsvp" class="rsvp" aria-labelledby="rsvp-title">
+  <Frame class="rsvp__inner" tone="duo" data-reveal>
+    <p class="eyebrow rsvp__eyebrow">The Reply</p>
+    <h2 id="rsvp-title" class="rsvp__title">We would be honored by your presence</h2>
+    <p class="rsvp__body">
+      Tell us you&rsquo;ll be there — joyfully, we hope. The reply takes a moment, and it
+      means a great deal to us as we set the table.
+    </p>
+    <div class="rsvp__actions">
+      <a class="gg-btn" data-variant="duo" href="/rsvp">Send our reply</a>
+    </div>
+    <p class="rsvp__deadline">Kindly reply by the first of August</p>
+  </Frame>
+</section>
+
+<style>
+  .rsvp {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding-block: clamp(var(--space-8), 12vw, var(--space-10));
+    border-block: 1px solid var(--line-soft);
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(194, 160, 66, 0.08), transparent 55%),
+      linear-gradient(180deg, var(--ink-900), var(--ink-800));
+  }
+  .rsvp__inner {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 600px);
+    margin-inline: auto;
+  }
+  .rsvp__eyebrow { color: var(--gold-300); }
+  .rsvp__title {
+    font-size: var(--fs-h1);
+    margin-bottom: var(--space-5);
+    text-wrap: balance;
+  }
+  .rsvp__body {
+    color: var(--text-muted);
+    font-size: var(--fs-body-lg);
+    max-width: 50ch;
+    margin-inline: auto;
+  }
+  .rsvp__actions { margin-top: var(--space-7); }
+  .rsvp__actions .gg-btn { padding-inline: var(--space-8); }
+  .rsvp__deadline {
+    margin-top: var(--space-5);
+    font-family: var(--font-deco);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+</style>

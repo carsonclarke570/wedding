@@ -1,0 +1,29 @@
+/* ============================================================
+   Gilt & Grove — Spacing & layout tokens
+   An 8px base rhythm with a couple of tighter half-steps for
+   fine Deco linework and ornament insets.
+   ============================================================ */
+
+:root {
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---- Container widths ---- */
+  --container-sm: 560px;
+  --container-md: 820px;
+  --container-lg: 1120px;
+  --container-xl: 1320px;
+
+  /* ---- Gutters ---- */
+  --gutter: var(--space-5);
+  --section-y: var(--space-9);
+}

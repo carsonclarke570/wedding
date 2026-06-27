@@ -1,0 +1,155 @@
+---
+import { triquetra } from '../lib/knots.mjs';
+// The Day — Carson leads (rose). The date block is a parchment card
+// (the brand's contrast moment), crowned by a woven triquetra seal.
+const crest = triquetra({ size: 40, stroke: 'var(--gold-600)', gap: 'var(--parchment-100)' });
+const moments = [
+  { name: 'Ceremony', note: 'Vows, before the people we love' },
+  { name: 'Dinner', note: 'A long table, well set' },
+  { name: 'Dancing', note: 'Until the candles are low' },
+];
+---
+
+<section id="day" class="section day" data-lead="rose" aria-labelledby="day-title">
+  <div class="container--md">
+    <div class="section__head" data-reveal>
+      <p class="eyebrow">The Day</p>
+      <h2 id="day-title">How the day will unfold</h2>
+      <p>One Saturday in early autumn, in a corner of New England we love — here is where and when to find us.</p>
+    </div>
+
+    <div class="day__card gg-card gg-card--parchment" data-reveal>
+      <div class="day__crest" aria-hidden="true" set:html={crest}></div>
+      <p class="day__weekday">Saturday</p>
+      <p class="day__date">
+        <span class="day__month">September</span>
+        <span class="day__num">19</span>
+        <span class="day__year">2026</span>
+      </p>
+      <div class="day__meta">
+        <span>Rehoboth, Massachusetts</span>
+        <span class="day__dot" aria-hidden="true"></span>
+        <span>Black Tie Optional</span>
+      </div>
+      <p class="day__venue-note">
+        The venue and the exact hour are being settled now — the moment they&rsquo;re
+        certain, you&rsquo;ll find them here.
+      </p>
+    </div>
+
+    <ol class="day__order" aria-label="The order of the day" data-reveal>
+      {moments.map((m, i) => (
+        <>
+          {i > 0 && <li class="day__sep" aria-hidden="true"><span class="day__gem"></span></li>}
+          <li class="day__moment">
+            <span class="day__moment-name">{m.name}</span>
+            <span class="day__moment-note">{m.note}</span>
+          </li>
+        </>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .day__card {
+    text-align: center;
+    max-width: 540px;
+    margin-inline: auto;
+    padding-block: clamp(var(--space-6), 5vw, var(--space-8));
+  }
+  .day__crest { display: flex; justify-content: center; margin-bottom: var(--space-4); }
+  .day__weekday {
+    font-family: var(--font-deco);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--rose-500);
+    margin: 0 0 var(--space-4);
+  }
+  .day__date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    margin: 0;
+    color: var(--ink-800);
+    font-family: var(--font-display);
+    line-height: 1;
+  }
+  .day__month, .day__year {
+    font-size: clamp(15px, 2.4vw, 19px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose-600);
+  }
+  .day__num {
+    font-size: clamp(56px, 13vw, 92px);
+    font-weight: var(--fw-bold);
+    color: var(--ink-900);
+  }
+  .day__meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    font-family: var(--font-deco);
+    font-size: 12.5px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--green-600);
+  }
+  .day__dot { width: 5px; height: 5px; transform: rotate(45deg); background: var(--gold-600); }
+  .day__venue-note {
+    margin: var(--space-5) auto 0;
+    max-width: 42ch;
+    font-style: italic;
+    color: var(--ink-700);
+    font-size: var(--fs-body);
+  }
+
+  .day__order {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(var(--space-4), 4vw, var(--space-7));
+    list-style: none;
+    margin: clamp(var(--space-6), 5vw, var(--space-8)) 0 0;
+    padding: 0;
+  }
+  .day__moment {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    text-align: center;
+    min-width: 9ch;
+  }
+  .day__moment-name {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--parchment-100);
+  }
+  .day__moment-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+  }
+  .day__sep { display: flex; align-items: center; }
+  .day__gem {
+    width: 7px; height: 7px;
+    transform: rotate(45deg);
+    background: var(--gold-500);
+    box-shadow: 0 0 0 3px rgba(194, 160, 66, 0.14);
+  }
+
+  @media (max-width: 540px) {
+    .day__order { flex-direction: column; align-items: center; gap: var(--space-5); }
+    .day__sep { transform: rotate(90deg); }
+  }
+</style>

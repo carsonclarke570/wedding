@@ -1,0 +1,90 @@
+---
+import monogram from '../../design-system/assets/monogram.svg?raw';
+
+const links = [
+  { href: '#story', label: 'Our Story' },
+  { href: '#day', label: 'The Day' },
+  { href: '#travel', label: 'Travel & Stay' },
+  { href: '#registry', label: 'Registry' },
+  { href: '/rsvp', label: 'RSVP' },
+];
+---
+
+<footer class="footer" aria-labelledby="footer-title">
+  <div class="container footer__inner">
+    <span class="footer__monogram" aria-hidden="true" set:html={monogram} />
+
+    <p class="footer__names" id="footer-title">
+      Warren <span class="footer__amp">&amp;</span> Carson
+    </p>
+    <p class="footer__date">
+      <time datetime="2026-09-19">19 September 2026</time>
+      &nbsp;·&nbsp; Rehoboth, Massachusetts
+    </p>
+
+    <nav class="footer__nav" aria-label="Footer">
+      {links.map((l) => <a class="gg-link footer__link" href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <div class="rule footer__rule" aria-hidden="true"><span class="rule__gem"></span></div>
+
+    <p class="footer__sign">Made with love, for the people we love.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    z-index: var(--z-raised);
+    text-align: center;
+    padding-block: clamp(var(--space-7), 8vw, var(--space-9));
+    border-top: 1px solid var(--line-soft);
+    background: var(--ink-900);
+  }
+  .footer__monogram { display: block; width: 72px; height: 72px; margin: 0 auto var(--space-5); }
+  .footer__monogram :global(svg) { display: block; width: 100%; height: 100%; }
+
+  .footer__names {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--parchment-100);
+  }
+  .footer__amp { font-family: var(--font-ornament); color: var(--gold-400); font-weight: var(--fw-regular); }
+  .footer__date {
+    margin: var(--space-3) 0 0;
+    font-family: var(--font-deco);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+  }
+  .footer__link {
+    font-family: var(--font-deco);
+    font-size: 13px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--parchment-300);
+  }
+  .footer__link::after { background: var(--gold-400); }
+
+  .footer__rule { margin-block: var(--space-6) var(--space-5); max-width: 220px; }
+
+  .footer__sign {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-soft);
+    font-size: var(--fs-body);
+  }
+</style>

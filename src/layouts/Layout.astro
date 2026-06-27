@@ -1,0 +1,60 @@
+---
+import '../styles/app.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Warren & Carson — September 19, 2026',
+  description = 'Together with their families, Warren and Carson invite you to celebrate their wedding in Rehoboth, Massachusetts, on the nineteenth of September, 2026.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#12150F" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+
+    <style>
+      .skip-link {
+        position: fixed;
+        top: var(--space-3);
+        left: var(--space-3);
+        z-index: var(--z-overlay);
+        padding: 10px 16px;
+        background: var(--ink-700);
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius-sm);
+        color: var(--parchment-100);
+        font-family: var(--font-deco);
+        letter-spacing: var(--ls-label);
+        text-transform: uppercase;
+        font-size: 13px;
+        transform: translateY(-160%);
+        transition: transform var(--dur-base) var(--ease-out);
+      }
+      .skip-link:focus { transform: none; }
+    </style>
+  </body>
+</html>

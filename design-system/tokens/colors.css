@@ -1,0 +1,98 @@
+/* ============================================================
+   Gilt & Grove — Color tokens
+   A dark, regal palette: near-black grounds with a faint green
+   undertone, antique gold as the metallic lead, desaturated
+   forest green and dusty rose as the wedding accents.
+   ============================================================ */
+
+:root {
+  /* ---- Ink (near-black grounds, warm/green undertone) ---- */
+  --ink-900: #0C0E0C;   /* deepest ground */
+  --ink-800: #12150F;   /* page background */
+  --ink-700: #1A1E18;   /* raised surface */
+  --ink-600: #242922;   /* card / panel */
+  --ink-500: #30362E;   /* hairline ground, hover fill */
+
+  /* ---- Graphite (cool-warm neutral grays) ---- */
+  --graphite-500: #444A41;
+  --graphite-400: #5E655A;
+  --graphite-300: #868D80;
+  --graphite-200: #AEB4A8;
+
+  /* ---- Parchment (warm creams / off-whites) ---- */
+  --parchment-100: #F4EFE3;  /* primary light text on dark */
+  --parchment-200: #E7DFCD;
+  --parchment-300: #D6CCB4;
+  --parchment-400: #BDB199;
+
+  /* ---- Gold (antique metallic, the brand lead) ---- */
+  --gold-300: #E9D6A0;  /* champagne highlight */
+  --gold-400: #D8BC6B;  /* light gold */
+  --gold-500: #C2A042;  /* core gold */
+  --gold-600: #A4842C;  /* antique */
+  --gold-700: #7E631F;  /* deep / shadowed gold */
+
+  /* ---- Forest green (deep, muted pine — wedding lead) ---- */
+  --green-300: #7E9079;  /* muted sage — lightest accent text */
+  --green-400: #56684F;  /* deep moss — accent / solid */
+  --green-500: #3E4F3A;  /* core forest */
+  --green-600: #2C3A2A;
+  --green-700: #1E281C;
+
+  /* ---- Garnet / oxblood (deep dusty red — wedding lead) ---- */
+  --rose-300: #B0817A;  /* dusty clay rose — lightest accent text */
+  --rose-400: #93534A;  /* brick / garnet — accent / solid */
+  --rose-500: #743D35;  /* core oxblood */
+  --rose-600: #57291F;
+  --rose-700: #3B1B16;
+
+  /* ---- Metallic gradient (gilt sheen) — gold now a fine accent ---- */
+  --gilt-sheen: linear-gradient(135deg, #7E631F 0%, #C2A042 28%, #E9D6A0 50%, #C2A042 72%, #7E631F 100%); /* @kind color */
+  --gilt-sheen-soft: linear-gradient(120deg, #A4842C 0%, #D8BC6B 45%, #E9D6A0 55%, #A4842C 100%); /* @kind color */
+
+  /* ---- Duo gradients — the two grooms (deep pine ⟷ garnet),
+         bridged by an antique-gold tie matching --metal at the center ---- */
+  --duo-sheen: linear-gradient(115deg, #4E6047 0%, #7E9079 22%, #C2A042 47%, #C2A042 53%, #B0817A 78%, #93534A 100%); /* @kind color */
+  --duo-line: linear-gradient(120deg, var(--green-400) 0%, var(--gold-500) 50%, var(--rose-400) 100%); /* @kind color */
+  --duo-soft: linear-gradient(120deg, rgba(86,104,79,0.22) 0%, rgba(194,160,66,0.12) 50%, rgba(147,83,74,0.22) 100%); /* @kind color */
+
+  /* ===================== SEMANTIC ALIASES ===================== */
+  --bg: var(--ink-800);
+  --bg-deep: var(--ink-900);
+  --surface: var(--ink-700);
+  --surface-card: var(--ink-600);
+  --surface-hover: var(--ink-500);
+
+  --text-body: var(--parchment-100);
+  --text-muted: var(--graphite-200);   /* AA on --ink-800 */
+  --text-soft: var(--parchment-400);
+  --text-heading: var(--parchment-100);
+  --text-on-accent: var(--ink-900);
+  --text-on-gold: var(--ink-900);
+
+  /* Twin leads — equal billing. Green = one groom, Rose = the other. */
+  --accent: var(--green-400);            /* primary lead (forest) */
+  --accent-strong: var(--green-300);
+  --accent-green: var(--green-400);
+  --accent-green-strong: var(--green-300);
+  --accent-rose: var(--rose-400);        /* co-primary lead (rose) */
+  --accent-rose-strong: var(--rose-300);
+
+  /* Gold demoted to a metallic tie — small ornaments, glints, the "&" */
+  --metal: var(--gold-500);
+  --metal-strong: var(--gold-300);
+  --accent-deep: var(--gold-700);
+
+  --line: rgba(244, 239, 227, 0.16);      /* neutral parchment hairline */
+  --line-strong: rgba(244, 239, 227, 0.30);
+  --line-soft: rgba(244, 239, 227, 0.10);
+  --line-gold: rgba(194, 160, 66, 0.40);  /* occasional metal hairline */
+  --line-green: rgba(86, 104, 79, 0.6);
+  --line-rose: rgba(147, 83, 74, 0.6);
+
+  --focus-ring: rgba(126, 144, 121, 0.55);
+
+  /* status (kept inside the palette) */
+  --positive: var(--green-400);
+  --critical: var(--rose-500);
+}

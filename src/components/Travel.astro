@@ -1,0 +1,91 @@
+---
+// Travel & Stay — Warren leads (green). Airport facts about Rehoboth, MA
+// are real geography; the room block and shuttle details follow.
+---
+
+<section id="travel" class="section travel" data-lead="green" aria-labelledby="travel-title">
+  <div class="container">
+    <div class="section__head" data-reveal>
+      <p class="eyebrow">Travel &amp; Stay</p>
+      <h2 id="travel-title">Finding your way to us</h2>
+      <p>Rehoboth sits just over the Rhode Island line — easy to reach, and worth lingering in for the weekend.</p>
+    </div>
+
+    <div class="travel__grid">
+      <article class="travel__panel gg-frame" data-reveal>
+        <h3 class="travel__panel-title">Getting Here</h3>
+        <dl class="travel__list">
+          <div class="travel__row">
+            <dt>By air</dt>
+            <dd>T.&nbsp;F. Green / Rhode Island (PVD) is about twenty-five minutes out; Boston Logan (BOS) about fifty.</dd>
+          </div>
+          <div class="travel__row">
+            <dt>By car</dt>
+            <dd>Rehoboth is an easy drive from Providence, Boston, and the Cape. Parking will be plentiful.</dd>
+          </div>
+          <div class="travel__row">
+            <dt>Getting about</dt>
+            <dd>A shuttle between the hotel block and the celebration is being arranged — details to come.</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="travel__panel travel__panel--stay" data-reveal>
+        <h3 class="travel__panel-title">Where to Stay</h3>
+        <p class="travel__stay-lede">
+          We&rsquo;re holding a block of rooms nearby at a friendly rate. Once it&rsquo;s
+          confirmed, the hotel, the link, and the booking cutoff will live right here.
+        </p>
+        <p class="travel__stay-meta">
+          <span class="chip" data-tone="green">Room block — coming soon</span>
+        </p>
+        <a class="gg-btn gg-btn--sm" data-variant="outline" href="#rsvp">Let us know you&rsquo;re coming</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .travel__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: clamp(var(--space-5), 4vw, var(--space-7));
+    align-items: start;
+  }
+
+  .travel__panel { background: rgba(0, 0, 0, 0.16); }
+  .travel__panel-title {
+    margin-bottom: var(--space-5);
+    color: var(--lead-strong);
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .travel__list { margin: 0; display: grid; gap: var(--space-5); }
+  .travel__row { display: grid; gap: 4px; }
+  .travel__row dt {
+    font-family: var(--font-deco);
+    font-size: 12px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--gold-300);
+  }
+  .travel__row dd { margin: 0; color: var(--text-body); font-size: var(--fs-body); }
+
+  .travel__panel--stay {
+    border: 1px solid var(--line-rose);
+    border-radius: var(--radius-md);
+    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+    background:
+      linear-gradient(160deg, rgba(147, 83, 74, 0.10), transparent 70%),
+      rgba(0, 0, 0, 0.16);
+  }
+  .travel__stay-lede { color: var(--text-muted); margin: 0; max-width: 46ch; }
+  .travel__stay-meta { margin: 0; }
+</style>

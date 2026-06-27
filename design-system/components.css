@@ -1,0 +1,164 @@
+/* ============================================================
+   Gilt & Grove — Component interaction states
+   Inline React styles can't express :hover/:active/:focus, so the
+   primitives carry stable class names and their motion lives here.
+   ============================================================ */
+
+/* ---- Button ---- */
+.gg-btn { position: relative; }
+.gg-btn[data-variant="duo"]:hover,
+.gg-btn[data-variant="gold"]:hover {
+  filter: brightness(1.08);
+  box-shadow: var(--glow-gold);
+}
+.gg-btn[data-variant="green"]:hover {
+  filter: brightness(1.14);
+  box-shadow: 0 0 0 1px var(--green-400), 0 8px 26px rgba(62,79,58,0.4);
+}
+.gg-btn[data-variant="rose"]:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 0 0 1px var(--rose-400), 0 8px 26px rgba(116,61,53,0.4);
+}
+.gg-btn[data-variant="outline"]:hover {
+  border-color: var(--accent-strong);
+  color: var(--accent-strong);
+  background: rgba(86, 104, 79, 0.1);
+}
+.gg-btn[data-variant="ghost"]:hover {
+  color: var(--accent-strong);
+  border-color: var(--line);
+}
+.gg-btn:active { transform: translateY(1px); }
+.gg-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--focus-ring);
+}
+.gg-btn:disabled,
+.gg-btn[aria-disabled="true"] {
+  opacity: 0.42;
+  cursor: not-allowed;
+  filter: none;
+  box-shadow: none;
+}
+
+/* ---- Inputs ---- */
+.gg-input,
+.gg-textarea {
+  transition: border-color var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+.gg-input::placeholder,
+.gg-textarea::placeholder { color: var(--graphite-400); }
+.gg-input:focus,
+.gg-textarea:focus {
+  outline: none;
+  border-color: var(--line-strong);
+  box-shadow: 0 0 0 3px rgba(216, 188, 107, 0.14);
+}
+
+/* ---- Select ---- */
+.gg-select {
+  transition: border-color var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+.gg-select:hover { border-color: var(--line); }
+.gg-select:focus {
+  outline: none;
+  border-color: var(--line-strong);
+  box-shadow: 0 0 0 3px rgba(216, 188, 107, 0.14);
+}
+.gg-select option { background: var(--ink-700); color: var(--text-body); }
+
+/* ---- Radio / Checkbox rows ---- */
+.gg-choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  padding: 9px 13px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.18);
+  transition: var(--transition-base);
+}
+.gg-choice:hover { border-color: var(--line); background: rgba(0, 0, 0, 0.28); }
+.gg-choice__input {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+.gg-choice__mark {
+  position: relative;
+  flex: 0 0 auto;
+  width: 16px; height: 16px;
+  border: 1.5px solid var(--line-strong);
+  background: rgba(0, 0, 0, 0.3);
+  transition: var(--transition-base);
+}
+.gg-choice__mark--radio { transform: rotate(45deg); }
+.gg-choice__label {
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  color: var(--text-body);
+}
+.gg-choice__input:checked ~ .gg-choice__mark { border-color: var(--metal); }
+.gg-choice__input:checked ~ .gg-choice__mark--radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--gilt-sheen);
+}
+.gg-choice__input:checked ~ .gg-choice__mark--check::after {
+  content: "";
+  position: absolute;
+  left: 4px; top: 0;
+  width: 5px; height: 9px;
+  border: solid var(--metal);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.gg-choice:has(.gg-choice__input:checked) { border-color: var(--line-strong); }
+.gg-choice[data-tone="green"]:has(.gg-choice__input:checked) { box-shadow: inset 0 0 0 1px var(--line-green); }
+.gg-choice[data-tone="rose"]:has(.gg-choice__input:checked) { box-shadow: inset 0 0 0 1px var(--line-rose); }
+.gg-choice[data-tone="gold"]:has(.gg-choice__input:checked) { box-shadow: inset 0 0 0 1px var(--line-gold); }
+.gg-choice__input:focus-visible ~ .gg-choice__mark {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--focus-ring);
+}
+
+/* ---- Link with animated gold underline ---- */
+.gg-link {
+  position: relative;
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+.gg-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.gg-link:hover::after { transform: scaleX(1); }
+
+/* ---- Card lift ---- */
+.gg-card--interactive {
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+.gg-card--interactive:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Parchment card: dark grounds force light heading/eyebrow/link colors —
+   restore ink on the cream surface so they stay legible. */
+.gg-card--parchment :is(h1, h2, h3, h4) { color: var(--ink-800); }
+.gg-card--parchment .gg-eyebrow { color: var(--green-600); }
+.gg-card--parchment p { color: var(--ink-700); }
+.gg-card--parchment a,
+.gg-card--parchment .gg-link { color: var(--rose-500); }
+.gg-card--parchment .gg-link::after { background: var(--rose-500); }

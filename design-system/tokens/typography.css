@@ -1,0 +1,55 @@
+/* ============================================================
+   Gilt & Grove — Typography tokens
+   Celtic  : Uncial Antiqua     (insular display — names + ceremonial titles)
+   Display : Cinzel             (Roman caps — headings, the carved workhorse)
+   Serif   : Cormorant Garamond (warm high-contrast body)
+   Deco    : Cinzel             (labels / eyebrows / nav — was Poiret One)
+   Ornament: Uncial Antiqua     (the gold "&" tie — was Cinzel Decorative)
+   ============================================================ */
+
+:root {
+  /* ---- Families ---- */
+  --font-celtic: 'Uncial Antiqua', 'Cinzel', serif;
+  --font-display: 'Cinzel', 'Times New Roman', serif;
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-deco: 'Cinzel', 'Times New Roman', serif;
+  --font-ornament: 'Uncial Antiqua', 'Cinzel', serif;
+
+  /* ---- Weights ---- */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium: 500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold: 700; /* @kind font */
+
+  /* ---- Type scale (fluid: clamp() floors protect small screens) ---- */
+  --fs-display: clamp(40px, 8.2vw, 72px); /* @kind font */
+  --fs-h1: clamp(34px, 6vw, 52px); /* @kind font */
+  --fs-h2: clamp(28px, 4.4vw, 38px); /* @kind font */
+  --fs-h3: clamp(22px, 3vw, 27px); /* @kind font */
+  --fs-h4: 21px;
+  --fs-body-lg: 21px;
+  --fs-body: 18px;
+  --fs-small: 15px;
+  --fs-eyebrow: 13px;   /* tracked label */
+  --fs-caption: 12px;
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1.04; /* @kind font */
+  --lh-snug: 1.2; /* @kind font */
+  --lh-body: 1.55; /* @kind font */
+  --lh-loose: 1.7; /* @kind font */
+
+  /* ---- Letter spacing ---- */
+  --ls-display: 0.04em; /* @kind font */
+  --ls-eyebrow: 0.34em; /* @kind font */
+  --ls-label: 0.18em; /* @kind font */
+  --ls-body: 0.005em; /* @kind font */
+
+  /* ===================== SEMANTIC ROLES ===================== */
+  --text-display: var(--fw-semibold) var(--fs-display)/var(--lh-tight) var(--font-display); /* @kind font */
+  --text-h1: var(--fw-semibold) var(--fs-h1)/var(--lh-tight) var(--font-display); /* @kind font */
+  --text-h2: var(--fw-medium) var(--fs-h2)/var(--lh-snug) var(--font-display); /* @kind font */
+  --text-h3: var(--fw-semibold) var(--fs-h3)/var(--lh-snug) var(--font-serif); /* @kind font */
+  --text-h4: var(--fw-semibold) var(--fs-h4)/var(--lh-snug) var(--font-serif); /* @kind font */
+  --text-body-role: var(--fw-regular) var(--fs-body)/var(--lh-body) var(--font-serif); /* @kind font */
+}

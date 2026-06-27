@@ -1,0 +1,13 @@
+---
+import divider from '../../design-system/assets/divider.svg?raw';
+---
+
+<div class="divider" role="separator" aria-hidden="true">
+  <span class="divider__mark" set:html={divider} />
+</div>
+
+<style>
+  .divider { display: flex; justify-content: center; padding-block: var(--space-2); }
+  .divider__mark { display: block; width: min(300px, 64vw); }
+  .divider__mark :global(svg) { display: block; width: 100%; height: auto; }
+</style>

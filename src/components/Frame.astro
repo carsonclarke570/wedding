@@ -1,0 +1,78 @@
+---
+// Gilt & Grove — Frame
+// The signature container: a woven Celtic braid border that ties a knot at
+// each corner and tapers to a single line mid-edge. Generated to fit any
+// size (client-side, regenerated on resize). Use to enshrine key content.
+interface Props {
+  tone?: 'duo' | 'gold' | 'green' | 'rose';
+  class?: string;
+  pad?: string;
+  surface?: string;
+  [key: string]: unknown;
+}
+const { tone = 'duo', class: className = '', pad, surface, ...rest } = Astro.props;
+const style = pad ? `--frame-pad:${pad}` : undefined;
+---
+
+<div
+  class:list={['gg-frame2', className]}
+  data-gg-frame
+  data-tone={tone}
+  data-surface={surface}
+  style={style}
+  {...rest}
+>
+  <svg class="gg-frame2__art" aria-hidden="true" preserveAspectRatio="none"></svg>
+  <div class="gg-frame2__inner"><slot /></div>
+</div>
+
+<style>
+  .gg-frame2 {
+    position: relative;
+    padding: var(--frame-pad, clamp(var(--space-6), 5vw, var(--space-8)));
+    background: transparent;
+  }
+  .gg-frame2__art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .gg-frame2__inner { position: relative; }
+</style>
+
+<script>
+  import { frameBraid } from '../lib/knots.mjs';
+
+  const toneCord: Record<string, string> = {
+    duo: 'var(--metal)',
+    gold: 'var(--metal)',
+    green: 'var(--accent-green)',
+    rose: 'var(--accent-rose)',
+  };
+
+  function paint(el: HTMLElement) {
+    const svg = el.querySelector<SVGSVGElement>('.gg-frame2__art');
+    if (!svg) return;
+    const w = Math.round(el.offsetWidth);
+    const h = Math.round(el.offsetHeight);
+    if (w < 60 || h < 60) { svg.innerHTML = ''; return; }
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    const tone = el.dataset.tone || 'duo';
+    const surface = el.dataset.surface || 'var(--bg)';
+    svg.innerHTML = frameBraid(w, h, { cord: toneCord[tone] || 'var(--metal)', bg: surface });
+  }
+
+  const frames = document.querySelectorAll<HTMLElement>('[data-gg-frame]');
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver((entries) => {
+      for (const e of entries) paint(e.target as HTMLElement);
+    });
+    frames.forEach((el) => { paint(el); ro.observe(el); });
+  } else {
+    frames.forEach(paint);
+    window.addEventListener('resize', () => frames.forEach(paint));
+  }
+</script>
