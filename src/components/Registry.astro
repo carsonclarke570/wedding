@@ -1,13 +1,19 @@
 ---
 import { triquetra } from '../lib/knots.mjs';
-// Registry — Carson leads (rose). Real retailer links swap in for the
-// placeholder button once the registry is live.
-const crest = triquetra({ size: 42, stroke: 'var(--metal)', gap: 'var(--ink-800)' });
+import { plaitSeal } from '../lib/ornaments.mjs';
+// Registry — bronze lead. Real retailer links swap in for the
+// placeholder button once the registry is live. Both ornament sets ship;
+// the `data-ornament` switch reveals one.
+const crestWoven = triquetra({ size: 42, stroke: 'var(--metal)', gap: 'var(--ink-800)' });
+const crestPlaited = plaitSeal({ size: 48, gold: '#B18A44', bg: '#121110' });
 ---
 
-<section id="registry" class="section registry" data-lead="rose" aria-labelledby="registry-title">
+<section id="registry" class="section registry" data-lead="bronze" aria-labelledby="registry-title">
   <div class="container--sm registry__inner" data-reveal>
-    <div class="registry__crest" aria-hidden="true" set:html={crest}></div>
+    <div class="registry__crest" aria-hidden="true">
+      <span class="orn-woven" set:html={crestWoven}></span>
+      <span class="orn-plaited" set:html={crestPlaited}></span>
+    </div>
     <p class="eyebrow">Registry</p>
     <h2 id="registry-title">Your presence is the gift</h2>
     <p class="registry__body">
@@ -20,7 +26,7 @@ const crest = triquetra({ size: 42, stroke: 'var(--metal)', gap: 'var(--ink-800)
       <span></span><i></i><span></span>
     </div>
 
-    <a class="gg-btn" data-variant="rose" href="#rsvp" aria-disabled="false">
+    <a class="gg-btn" data-variant="bronze" href="#rsvp" aria-disabled="false">
       Registry — coming soon
     </a>
     <p class="registry__note">For now, the kindest thing you can do is say you&rsquo;ll come.</p>
@@ -45,13 +51,13 @@ const crest = triquetra({ size: 42, stroke: 'var(--metal)', gap: 'var(--ink-800)
     width: 200px;
   }
   .registry__rule span { flex: 1; height: 1px; }
-  .registry__rule span:first-child { background: linear-gradient(90deg, transparent, var(--rose-400)); }
+  .registry__rule span:first-child { background: linear-gradient(90deg, transparent, var(--gold-500)); }
   .registry__rule span:last-child { background: linear-gradient(90deg, var(--green-400), transparent); }
   .registry__rule i {
     width: 8px; height: 8px;
     transform: rotate(45deg);
     background: var(--gold-400);
-    box-shadow: 0 0 0 4px rgba(194, 160, 66, 0.14);
+    box-shadow: 0 0 0 4px rgba(177, 138, 68, 0.14);
   }
   .registry__note {
     margin-top: var(--space-5);

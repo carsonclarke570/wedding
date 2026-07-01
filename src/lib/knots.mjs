@@ -185,7 +185,7 @@ export function archBraid(
     `<linearGradient id="${cordGradId}" x1="0" y1="0" x2="1" y2="0">` +
     `<stop offset="0" stop-color="var(--green-300)"/>` +
     `<stop offset="0.5" stop-color="var(--gold-400)"/>` +
-    `<stop offset="1" stop-color="var(--rose-300)"/>` +
+    `<stop offset="1" stop-color="var(--green-300)"/>` +
     `</linearGradient>` +
     `<linearGradient id="ggRay" x1="0" y1="1" x2="0" y2="0">` +
     `<stop offset="0" stop-color="var(--gold-500)" stop-opacity="0"/>` +
@@ -194,6 +194,28 @@ export function archBraid(
     `</defs>`;
 
   return { svg: defs + `<g>${rays.join('')}</g>` + braid, viewBox: `0 0 ${W} ${H}`, width: W, height: H };
+}
+
+/* ---- Woven divider — the rope twin of divider.svg ----------------------
+   Two round-capped rope rails (sage ⟷ bronze) tapering in from the edges,
+   tied at centre by the woven triquetra. Round caps + the duo sheen keep it
+   firmly in the rope family. */
+export function wovenDivider({ width = 300, gold = 'var(--metal)', bg = 'var(--bg)' } = {}) {
+  const h = 44, cy = h / 2, size = 34, knotW = size + 14;
+  const railEnd = (width - knotW) / 2 - 4;
+  const seal = triquetra({ size, stroke: gold, gap: bg });
+  const inner = seal.replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
+  return (
+    `<svg width="${width}" height="${h}" viewBox="0 0 ${width} ${h}" fill="none" overflow="visible" aria-hidden="true" style="display:block">` +
+    // CSS vars resolve in `style`, not in stop-color/stroke attributes — so the
+    // rails are styled. Round caps are the rope tell against the plaited rails.
+    `<line x1="14" y1="${cy}" x2="${railEnd}" y2="${cy}" stroke-width="1.6" stroke-linecap="round" style="stroke:var(--green-300)"/>` +
+    `<line x1="${width - railEnd}" y1="${cy}" x2="${width - 14}" y2="${cy}" stroke-width="1.6" stroke-linecap="round" style="stroke:var(--gold-300)"/>` +
+    // triquetra() draws in a 0..100 space scaled by its own <svg>; we stripped
+    // that wrapper, so re-apply the 100→size scale about the knot's centre.
+    `<g transform="translate(${width / 2} ${cy}) scale(${size / 100}) translate(-50 -50)">${inner}</g>` +
+    `</svg>`
+  );
 }
 
 /* ---- Triquetra (trinity-knot) seal — a small woven crest ---------------

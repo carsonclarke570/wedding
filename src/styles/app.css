@@ -8,6 +8,14 @@
 
 @import url('../../design-system/styles.css');
 
+/* ---- Ornament-set preview switch (temporary) ----
+   Components emit both the woven and plaited ornament; `data-ornament` on
+   <html> reveals one. Remove this block (and the toggle) once a set is chosen. */
+.orn-woven,
+.orn-plaited { display: contents; }
+[data-ornament='plaited'] .orn-woven { display: none !important; }
+[data-ornament='woven'] .orn-plaited { display: none !important; }
+
 /* ---- App tokens: z-index scale + the lattice texture ---- */
 :root {
   --z-base: 0;
@@ -18,8 +26,9 @@
 
   --nav-h: 76px;
 
-  /* Per-section "lead" — the equal-billing system. Sections set
-     data-lead="green|rose" and everything accent-tinted reads these. */
+  /* Per-section "lead". Greenery is the default; sections set
+     data-lead="green|bronze" for a warm/cool rhythm and everything
+     accent-tinted reads these. */
   --lead: var(--green-400);
   --lead-strong: var(--green-300);
   --lead-line: var(--line-green);
@@ -30,10 +39,10 @@
   --lead-strong: var(--green-300);
   --lead-line: var(--line-green);
 }
-[data-lead='rose'] {
-  --lead: var(--rose-400);
-  --lead-strong: var(--rose-300);
-  --lead-line: var(--line-rose);
+[data-lead='bronze'] {
+  --lead: var(--gold-500);
+  --lead-strong: var(--gold-300);
+  --lead-line: var(--line-gold);
 }
 
 *,
@@ -78,9 +87,9 @@ body::after {
   z-index: var(--z-base);
   pointer-events: none;
   background:
-    radial-gradient(120% 80% at 50% -10%, rgba(194, 160, 66, 0.10), transparent 60%),
-    radial-gradient(80% 60% at 12% 0%, rgba(86, 104, 79, 0.12), transparent 55%),
-    radial-gradient(80% 60% at 88% 0%, rgba(147, 83, 74, 0.12), transparent 55%);
+    radial-gradient(120% 80% at 50% -10%, rgba(177, 138, 68, 0.10), transparent 60%),
+    radial-gradient(80% 60% at 12% 0%, rgba(95, 116, 86, 0.13), transparent 55%),
+    radial-gradient(80% 60% at 88% 0%, rgba(141, 107, 49, 0.12), transparent 55%);
 }
 
 main { position: relative; z-index: var(--z-raised); }
@@ -133,7 +142,7 @@ main { position: relative; z-index: var(--z-raised); }
   opacity: 0.5;
 }
 
-/* The ornamental rule (green⟷rose hairline + centered gold diamond),
+/* The ornamental rule (green⟷bronze hairline + centered bronze diamond),
    reusable wherever sections meet. */
 .rule {
   display: flex;
@@ -145,13 +154,13 @@ main { position: relative; z-index: var(--z-raised); }
 .rule::before,
 .rule::after { content: ''; flex: 1; height: 1px; }
 .rule::before { background: linear-gradient(90deg, transparent, var(--green-400)); }
-.rule::after { background: linear-gradient(90deg, var(--rose-400), transparent); }
+.rule::after { background: linear-gradient(90deg, var(--gold-500), transparent); }
 .rule__gem {
   width: 8px; height: 8px;
   flex: 0 0 auto;
   transform: rotate(45deg);
   background: var(--gold-400);
-  box-shadow: 0 0 0 4px rgba(194, 160, 66, 0.14);
+  box-shadow: 0 0 0 4px rgba(177, 138, 68, 0.14);
 }
 
 /* ============================================================
@@ -189,7 +198,7 @@ main { position: relative; z-index: var(--z-raised); }
 .gg-btn--sm { min-height: 42px; padding: 10px var(--space-5); font-size: 12.5px; }
 
 /* The duo gradient is a fine metallic TIE, not a fill: flat deep ground with
-   the green→gold→garnet gradient only as the border (matches Button.jsx). */
+   the green→bronze→green gradient only as the border (matches Button.jsx). */
 .gg-btn[data-variant='duo'] {
   --btn-fg: var(--parchment-100);
   background: linear-gradient(var(--ink-600), var(--ink-600)) padding-box,
@@ -199,7 +208,7 @@ main { position: relative; z-index: var(--z-raised); }
   box-shadow: var(--shadow-sm);
 }
 .gg-btn[data-variant='green'] { --btn-fg: var(--parchment-100); background: var(--green-500); }
-.gg-btn[data-variant='rose']  { --btn-fg: var(--parchment-100); background: var(--rose-500); }
+.gg-btn[data-variant='bronze'] { --btn-fg: var(--parchment-100); background: var(--gold-600); }
 .gg-btn[data-variant='gold']  { --btn-fg: var(--ink-900); background: var(--gilt-sheen); font-weight: var(--fw-semibold); }
 .gg-btn[data-variant='outline'] { border-color: var(--line-strong); color: var(--parchment-100); }
 .gg-btn[data-variant='ghost'] { color: var(--lead-strong); padding-inline: var(--space-3); }
@@ -249,7 +258,7 @@ main { position: relative; z-index: var(--z-raised); }
   background: var(--gold-400);
 }
 .chip[data-tone='green']::before { background: var(--green-300); }
-.chip[data-tone='rose']::before { background: var(--rose-300); }
+.chip[data-tone='bronze']::before { background: var(--gold-300); }
 
 /* ---- Deco-framed photo slot (until real photography lands) ---- */
 .photo-slot {
@@ -260,8 +269,8 @@ main { position: relative; z-index: var(--z-raised); }
   border: 1px solid var(--line-gold);
   border-radius: var(--radius-sm);
   background:
-    radial-gradient(120% 90% at 30% 15%, rgba(86, 104, 79, 0.28), transparent 60%),
-    radial-gradient(120% 90% at 80% 90%, rgba(147, 83, 74, 0.26), transparent 60%),
+    radial-gradient(120% 90% at 30% 15%, rgba(95, 116, 86, 0.28), transparent 60%),
+    radial-gradient(120% 90% at 80% 90%, rgba(141, 107, 49, 0.26), transparent 60%),
     var(--ink-600);
   overflow: hidden;
   isolation: isolate;
@@ -317,7 +326,7 @@ main { position: relative; z-index: var(--z-raised); }
 }
 @keyframes gem-glint {
   0%, 100% { opacity: 0.85; }
-  50% { opacity: 1; filter: drop-shadow(0 0 6px rgba(216, 188, 107, 0.55)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 6px rgba(230, 203, 142, 0.55)); }
 }
 
 /* Scroll-driven reveal: only when the browser supports view timelines AND

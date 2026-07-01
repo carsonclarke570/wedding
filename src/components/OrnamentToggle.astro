@@ -1,0 +1,88 @@
+---
+// Temporary preview switch for the two ornament sets (woven vs plaited).
+// Flips `data-ornament` on <html> and remembers the choice. Remove once a
+// set is chosen, along with the .orn-* rules in app.css.
+---
+
+<div class="orntoggle" role="group" aria-label="Ornament style preview">
+  <span class="orntoggle__label">Ornament</span>
+  <div class="orntoggle__seg">
+    <button type="button" class="orntoggle__btn" data-mode="woven">Woven</button>
+    <button type="button" class="orntoggle__btn" data-mode="plaited">Plaited</button>
+  </div>
+</div>
+
+<style>
+  .orntoggle {
+    position: fixed;
+    right: clamp(12px, 3vw, 24px);
+    bottom: clamp(12px, 3vw, 24px);
+    z-index: var(--z-overlay);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 8px 10px 8px 14px;
+    background: rgba(12, 14, 12, 0.86);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-md);
+  }
+  .orntoggle__label {
+    font-family: var(--font-deco);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-label);
+    font-size: 11px;
+    color: var(--text-soft);
+  }
+  .orntoggle__seg {
+    display: flex;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+  }
+  .orntoggle__btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-deco);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-label);
+    font-size: 12px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+  }
+  .orntoggle__btn:hover { color: var(--parchment-100); }
+  .orntoggle__btn[aria-pressed='true'] {
+    background: var(--gold-500);
+    color: var(--ink-900);
+  }
+  .orntoggle__btn:focus-visible {
+    outline: 2px solid var(--gold-400);
+    outline-offset: -2px;
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+  const KEY = 'gg-ornament';
+  const btns = Array.from(document.querySelectorAll<HTMLButtonElement>('.orntoggle__btn'));
+
+  function sync() {
+    const mode = root.dataset.ornament || 'plaited';
+    btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+  }
+
+  btns.forEach((b) =>
+    b.addEventListener('click', () => {
+      const mode = b.dataset.mode!;
+      root.dataset.ornament = mode;
+      try { localStorage.setItem(KEY, mode); } catch (e) {}
+      sync();
+    })
+  );
+
+  sync();
+</script>

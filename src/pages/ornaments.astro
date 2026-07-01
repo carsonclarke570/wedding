@@ -1,0 +1,264 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { wovenDivider, triquetra } from '../lib/knots.mjs';
+import { plaitDivider, plaitSeal } from '../lib/ornaments.mjs';
+import monogramAngular from '../../design-system/assets/monogram.svg?raw';
+
+// Static ornaments (no measured size needed) are generated at build time.
+const wovenDiv = wovenDivider({ width: 340 });
+const plaitDiv = plaitDivider({ width: 340 });
+const wovenSeal = triquetra({ size: 70 });
+const plaitSealSvg = plaitSeal({ size: 70 });
+
+const sets = [
+  {
+    key: 'woven',
+    name: 'Woven',
+    tag: 'Rope · round · interlaced',
+    blurb:
+      'Two phase-opposed cords with rounded caps, truly threaded over and under each other. Continuous, organic, hand-tied. The romance of the knot itself.',
+  },
+  {
+    key: 'plaited',
+    name: 'Plaited',
+    tag: 'Angular · engraved · architectural',
+    blurb:
+      'Straight cords at 45°, butt-capped, each engraved with a fine channel down its spine and pinned at every turn. Geometric, inscribed — Deco first, Celtic through structure.',
+  },
+];
+---
+
+<Layout title="Gilt & Grove — Ornament study" ornamentToggle={false}>
+  <main id="main" class="study">
+    <header class="study__head">
+      <p class="gg-eyebrow">Gilt &amp; Grove · Ornament study</p>
+      <h1>Two hands for the same knot</h1>
+      <p class="study__lede">
+        The frames weave a soft rope; the monogram and divider are cut from
+        straight, engraved lines. Side by side they pull against each other —
+        so here is each knot drawn twice, once in a <em>woven</em> rope hand and
+        once in a <em>plaited</em> angular hand. Pick the one that should run
+        across the whole site.
+      </p>
+    </header>
+
+    <div class="cols">
+      {sets.map((s) => (
+        <section class="col" data-set={s.key}>
+          <div class="col__head">
+            <h2>{s.name}</h2>
+            <p class="col__tag">{s.tag}</p>
+            <p class="col__blurb">{s.blurb}</p>
+          </div>
+
+          {/* Frame — the signature container */}
+          <figure class="spec">
+            <div class="framebox" data-engine={s.key === 'woven' ? 'braid' : 'plait'}>
+              <svg class="framebox__art" aria-hidden="true" preserveAspectRatio="none"></svg>
+              <div class="framebox__inner">
+                <p class="gg-eyebrow">Together with their families</p>
+                <p class="names">Warren <span class="amp">&amp;</span> Carson</p>
+                <p class="date">The Nineteenth of September · Two Thousand Twenty-Six</p>
+              </div>
+            </div>
+            <figcaption>Frame</figcaption>
+          </figure>
+
+          {/* Divider */}
+          <figure class="spec">
+            <div class="rule" set:html={s.key === 'woven' ? wovenDiv : plaitDiv} />
+            <figcaption>Divider</figcaption>
+          </figure>
+
+          {/* Monogram */}
+          <figure class="spec">
+            {s.key === 'woven' ? (
+              <div class="mono mono--woven">
+                <div class="monoframe" data-engine="braid">
+                  <svg class="framebox__art" aria-hidden="true" preserveAspectRatio="none"></svg>
+                  <div class="monoframe__inner">
+                    <span class="mono__letters">W<span class="mono__amp">&amp;</span>C</span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div class="mono mono--plaited" set:html={monogramAngular} />
+            )}
+            <figcaption>Monogram</figcaption>
+          </figure>
+
+          {/* Seal */}
+          <figure class="spec">
+            <div class="seal" set:html={s.key === 'woven' ? wovenSeal : plaitSealSvg} />
+            <figcaption>Seal</figcaption>
+          </figure>
+        </section>
+      ))}
+    </div>
+
+    <p class="study__foot">
+      Both sets share palette, weight and the trinity grammar — only the hand
+      changes. Tell me which to adopt and I’ll retire the other and bring the
+      whole system (frame, divider, monogram, seal, hero halo, page lattice)
+      into the one voice.
+    </p>
+  </main>
+
+  <style>
+    .study {
+      max-width: 1180px;
+      margin-inline: auto;
+      padding: clamp(var(--space-7), 8vw, var(--space-10)) var(--space-5) var(--space-9);
+    }
+    .study__head { text-align: center; max-width: 50ch; margin-inline: auto; }
+    .study__head h1 { margin-top: var(--space-3); }
+    .study__lede {
+      color: var(--text-muted);
+      font: var(--text-lead, var(--text-body));
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+    .study__lede em { color: var(--green-300); font-style: italic; }
+
+    .cols {
+      margin-top: clamp(var(--space-7), 7vw, var(--space-9));
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(var(--space-5), 5vw, var(--space-8));
+    }
+    @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-7);
+    }
+    .col__head { text-align: center; min-height: 9.5rem; }
+    .col__head h2 { margin-bottom: var(--space-2); }
+    .col__tag {
+      font-family: var(--font-deco);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      font-size: 13px;
+      color: var(--gold-400);
+      margin-bottom: var(--space-3);
+    }
+    .col__blurb {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.55;
+      max-width: 38ch;
+      margin-inline: auto;
+      text-wrap: pretty;
+    }
+
+    .spec { margin: 0; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
+    figcaption {
+      font-family: var(--font-deco);
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* Frame demo box — painted by the two engines client-side */
+    .framebox {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      min-height: 200px;
+      display: grid;
+      place-items: center;
+    }
+    .framebox__art { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+    .framebox__inner { position: relative; text-align: center; padding: clamp(var(--space-6), 6vw, var(--space-8)); }
+    .framebox__inner .gg-eyebrow { color: var(--text-soft); }
+    .names {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      letter-spacing: var(--ls-display);
+      color: var(--parchment-100);
+      margin: var(--space-3) 0 var(--space-2);
+      text-transform: uppercase;
+    }
+    .names .amp { font-family: var(--font-ornament); color: var(--gold-400); margin: 0 .15em; }
+    .date {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: .95rem;
+      margin: 0;
+    }
+
+    .rule { width: 100%; max-width: 340px; }
+    .rule :global(svg) { width: 100%; height: auto; display: block; }
+
+    /* Monogram */
+    .mono { display: flex; justify-content: center; }
+    .mono--plaited :global(svg) { width: 150px; height: auto; display: block; }
+    .monoframe { position: relative; width: 190px; height: 150px; display: grid; place-items: center; }
+    .monoframe__inner { position: relative; }
+    .mono__letters {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      letter-spacing: 3px;
+      color: var(--gold-400);
+      text-transform: uppercase;
+    }
+    .mono__amp { color: var(--green-300); margin: 0 .12em; }
+
+    /* Seal */
+    .seal { display: flex; justify-content: center; }
+    .seal :global(svg) { display: block; }
+
+    .study__foot {
+      margin-top: clamp(var(--space-8), 9vw, var(--space-10));
+      text-align: center;
+      max-width: 56ch;
+      margin-inline: auto;
+      color: var(--text-muted);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+    .study__foot::before {
+      content: "✦";
+      display: block;
+      color: var(--gold-500);
+      margin-bottom: var(--space-4);
+      font-size: 1rem;
+    }
+  </style>
+
+  <script>
+    import { frameBraid } from '../lib/knots.mjs';
+    import { plaitFrame } from '../lib/ornaments.mjs';
+
+    function paint(el: HTMLElement) {
+      const svg = el.querySelector<SVGSVGElement>('.framebox__art');
+      if (!svg) return;
+      const w = Math.round(el.offsetWidth);
+      const h = Math.round(el.offsetHeight);
+      if (w < 60 || h < 60) { svg.innerHTML = ''; return; }
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      const engine = el.dataset.engine;
+      svg.innerHTML =
+        engine === 'plait'
+          ? plaitFrame(w, h)                                   // engraved style → hex
+          : frameBraid(w, h, { cord: 'var(--metal)', bg: 'var(--bg)' });
+    }
+
+    const boxes = document.querySelectorAll<HTMLElement>('[data-engine]');
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver((entries) => {
+        for (const e of entries) paint(e.target as HTMLElement);
+      });
+      boxes.forEach((el) => { paint(el); ro.observe(el); });
+    } else {
+      boxes.forEach(paint);
+      window.addEventListener('resize', () => boxes.forEach(paint));
+    }
+  </script>
+</Layout>

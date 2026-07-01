@@ -1,8 +1,12 @@
 ---
 import { triquetra } from '../lib/knots.mjs';
-// The Day — Carson leads (rose). The date block is a parchment card
-// (the brand's contrast moment), crowned by a woven triquetra seal.
-const crest = triquetra({ size: 40, stroke: 'var(--gold-600)', gap: 'var(--parchment-100)' });
+import { plaitSeal } from '../lib/ornaments.mjs';
+// The Day — bronze lead. The date block is a parchment card
+// (the brand's contrast moment), crowned by the trinity seal. Both ornament
+// sets ship; the `data-ornament` switch reveals one. On parchment the seal
+// is antique bronze with a parchment-coloured channel.
+const crestWoven = triquetra({ size: 40, stroke: 'var(--gold-600)', gap: 'var(--parchment-100)' });
+const crestPlaited = plaitSeal({ size: 46, gold: '#8D6B31', bg: '#FBF7EE' });
 const moments = [
   { name: 'Ceremony', note: 'Vows, before the people we love' },
   { name: 'Dinner', note: 'A long table, well set' },
@@ -10,7 +14,7 @@ const moments = [
 ];
 ---
 
-<section id="day" class="section day" data-lead="rose" aria-labelledby="day-title">
+<section id="day" class="section day" data-lead="bronze" aria-labelledby="day-title">
   <div class="container--md">
     <div class="section__head" data-reveal>
       <p class="eyebrow">The Day</p>
@@ -19,7 +23,10 @@ const moments = [
     </div>
 
     <div class="day__card gg-card gg-card--parchment" data-reveal>
-      <div class="day__crest" aria-hidden="true" set:html={crest}></div>
+      <div class="day__crest" aria-hidden="true">
+        <span class="orn-woven" set:html={crestWoven}></span>
+        <span class="orn-plaited" set:html={crestPlaited}></span>
+      </div>
       <p class="day__weekday">Saturday</p>
       <p class="day__date">
         <span class="day__month">September</span>
@@ -64,7 +71,7 @@ const moments = [
     font-size: var(--fs-eyebrow);
     letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
-    color: var(--rose-500);
+    color: var(--gold-700);
     margin: 0 0 var(--space-4);
   }
   .day__date {
@@ -81,7 +88,7 @@ const moments = [
     font-size: clamp(15px, 2.4vw, 19px);
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--rose-600);
+    color: var(--gold-700);
   }
   .day__num {
     font-size: clamp(56px, 13vw, 92px);
@@ -145,7 +152,7 @@ const moments = [
     width: 7px; height: 7px;
     transform: rotate(45deg);
     background: var(--gold-500);
-    box-shadow: 0 0 0 3px rgba(194, 160, 66, 0.14);
+    box-shadow: 0 0 0 3px rgba(177, 138, 68, 0.14);
   }
 
   @media (max-width: 540px) {

@@ -1,9 +1,15 @@
 ---
-import divider from '../../design-system/assets/divider.svg?raw';
+import { wovenDivider } from '../lib/knots.mjs';
+import { plaitDivider } from '../lib/ornaments.mjs';
+
+// Both ornament sets ship; the `data-ornament` switch reveals one (see app.css).
+const woven = wovenDivider({ width: 300 });
+const plaited = plaitDivider({ width: 300 });
 ---
 
 <div class="divider" role="separator" aria-hidden="true">
-  <span class="divider__mark" set:html={divider} />
+  <span class="divider__mark orn-woven" set:html={woven} />
+  <span class="divider__mark orn-plaited" set:html={plaited} />
 </div>
 
 <style>

@@ -1,60 +1,54 @@
 /* ============================================================
    Gilt & Grove — Color tokens
-   A dark, regal palette: near-black grounds with a faint green
-   undertone, antique gold as the metallic lead, desaturated
-   forest green and dusty rose as the wedding accents.
+   A dark, natural palette drawn from the barn wedding: warm
+   near-black grounds (fixtures, chairs, wrought iron), floral
+   white (tablecloths, blooms), eucalyptus green as the lead
+   (the hung greenery), and bronze/gold as the metallic accent.
    ============================================================ */
 
 :root {
-  /* ---- Ink (near-black grounds, warm/green undertone) ---- */
-  --ink-900: #0C0E0C;   /* deepest ground */
-  --ink-800: #12150F;   /* page background */
-  --ink-700: #1A1E18;   /* raised surface */
-  --ink-600: #242922;   /* card / panel */
-  --ink-500: #30362E;   /* hairline ground, hover fill */
+  /* ---- Ink (warm near-black grounds — iron, chairs, night barn) ---- */
+  --ink-900: #0A0A08;   /* deepest ground */
+  --ink-800: #121110;   /* page background */
+  --ink-700: #1B1A17;   /* raised surface */
+  --ink-600: #262320;   /* card / panel */
+  --ink-500: #33302A;   /* hairline ground, hover fill */
 
-  /* ---- Graphite (cool-warm neutral grays) ---- */
-  --graphite-500: #444A41;
-  --graphite-400: #5E655A;
-  --graphite-300: #868D80;
-  --graphite-200: #AEB4A8;
+  /* ---- Graphite (warm neutral grays) ---- */
+  --graphite-500: #4A463F;
+  --graphite-400: #67625A;
+  --graphite-300: #8D887E;
+  --graphite-200: #B5AFA4;
 
-  /* ---- Parchment (warm creams / off-whites) ---- */
-  --parchment-100: #F4EFE3;  /* primary light text on dark */
-  --parchment-200: #E7DFCD;
-  --parchment-300: #D6CCB4;
-  --parchment-400: #BDB199;
+  /* ---- Parchment (floral white — cloths, blooms, light text) ---- */
+  --parchment-100: #FBF7EE;  /* primary light text on dark */
+  --parchment-200: #F2ECDF;
+  --parchment-300: #E2DAC9;
+  --parchment-400: #C9BFAC;
 
-  /* ---- Gold (antique metallic, the brand lead) ---- */
-  --gold-300: #E9D6A0;  /* champagne highlight */
-  --gold-400: #D8BC6B;  /* light gold */
-  --gold-500: #C2A042;  /* core gold */
-  --gold-600: #A4842C;  /* antique */
-  --gold-700: #7E631F;  /* deep / shadowed gold */
+  /* ---- Bronze / gold (metallic accent — bronze florals, warmth) ---- */
+  --gold-300: #E6CB8E;  /* light champagne-bronze highlight */
+  --gold-400: #CDAA61;  /* light bronze */
+  --gold-500: #B18A44;  /* core bronze-gold */
+  --gold-600: #8D6B31;  /* antique bronze */
+  --gold-700: #664C22;  /* deep / shadowed bronze */
 
-  /* ---- Forest green (deep, muted pine — wedding lead) ---- */
-  --green-300: #7E9079;  /* muted sage — lightest accent text */
-  --green-400: #56684F;  /* deep moss — accent / solid */
-  --green-500: #3E4F3A;  /* core forest */
-  --green-600: #2C3A2A;
-  --green-700: #1E281C;
+  /* ---- Greenery (eucalyptus / sage → deep foliage — the lead) ---- */
+  --green-300: #90A587;  /* light sage — lightest accent text */
+  --green-400: #5F7456;  /* eucalyptus / moss — accent / solid */
+  --green-500: #47593F;  /* core foliage */
+  --green-600: #34432E;
+  --green-700: #22301E;
 
-  /* ---- Garnet / oxblood (deep dusty red — wedding lead) ---- */
-  --rose-300: #B0817A;  /* dusty clay rose — lightest accent text */
-  --rose-400: #93534A;  /* brick / garnet — accent / solid */
-  --rose-500: #743D35;  /* core oxblood */
-  --rose-600: #57291F;
-  --rose-700: #3B1B16;
+  /* ---- Metallic gradient (gilt sheen) — the bronze foil ---- */
+  --gilt-sheen: linear-gradient(135deg, #664C22 0%, #B18A44 28%, #E6CB8E 50%, #B18A44 72%, #664C22 100%); /* @kind color */
+  --gilt-sheen-soft: linear-gradient(120deg, #8D6B31 0%, #CDAA61 45%, #E6CB8E 55%, #8D6B31 100%); /* @kind color */
 
-  /* ---- Metallic gradient (gilt sheen) — gold now a fine accent ---- */
-  --gilt-sheen: linear-gradient(135deg, #7E631F 0%, #C2A042 28%, #E9D6A0 50%, #C2A042 72%, #7E631F 100%); /* @kind color */
-  --gilt-sheen-soft: linear-gradient(120deg, #A4842C 0%, #D8BC6B 45%, #E9D6A0 55%, #A4842C 100%); /* @kind color */
-
-  /* ---- Duo gradients — the two grooms (deep pine ⟷ garnet),
-         bridged by an antique-gold tie matching --metal at the center ---- */
-  --duo-sheen: linear-gradient(115deg, #4E6047 0%, #7E9079 22%, #C2A042 47%, #C2A042 53%, #B0817A 78%, #93534A 100%); /* @kind color */
-  --duo-line: linear-gradient(120deg, var(--green-400) 0%, var(--gold-500) 50%, var(--rose-400) 100%); /* @kind color */
-  --duo-soft: linear-gradient(120deg, rgba(86,104,79,0.22) 0%, rgba(194,160,66,0.12) 50%, rgba(147,83,74,0.22) 100%); /* @kind color */
+  /* ---- Duo gradients — the couple's signature foil: greenery gilded
+         with bronze, symmetric (foliage ⟷ bronze ⟷ foliage) ---- */
+  --duo-sheen: linear-gradient(115deg, #47593F 0%, #90A587 22%, #CDAA61 47%, #E6CB8E 53%, #90A587 78%, #5F7456 100%); /* @kind color */
+  --duo-line: linear-gradient(120deg, var(--green-500) 0%, var(--gold-500) 50%, var(--green-500) 100%); /* @kind color */
+  --duo-soft: linear-gradient(120deg, rgba(95,116,86,0.22) 0%, rgba(177,138,68,0.14) 50%, rgba(95,116,86,0.22) 100%); /* @kind color */
 
   /* ===================== SEMANTIC ALIASES ===================== */
   --bg: var(--ink-800);
@@ -70,29 +64,26 @@
   --text-on-accent: var(--ink-900);
   --text-on-gold: var(--ink-900);
 
-  /* Twin leads — equal billing. Green = one groom, Rose = the other. */
-  --accent: var(--green-400);            /* primary lead (forest) */
+  /* Greenery is the single lead; bronze is the warm metallic accent. */
+  --accent: var(--green-400);            /* primary lead (greenery) */
   --accent-strong: var(--green-300);
   --accent-green: var(--green-400);
   --accent-green-strong: var(--green-300);
-  --accent-rose: var(--rose-400);        /* co-primary lead (rose) */
-  --accent-rose-strong: var(--rose-300);
 
-  /* Gold demoted to a metallic tie — small ornaments, glints, the "&" */
+  /* Bronze / gold — the metallic accent: ornaments, glints, the "&" */
   --metal: var(--gold-500);
   --metal-strong: var(--gold-300);
   --accent-deep: var(--gold-700);
 
-  --line: rgba(244, 239, 227, 0.16);      /* neutral parchment hairline */
-  --line-strong: rgba(244, 239, 227, 0.30);
-  --line-soft: rgba(244, 239, 227, 0.10);
-  --line-gold: rgba(194, 160, 66, 0.40);  /* occasional metal hairline */
-  --line-green: rgba(86, 104, 79, 0.6);
-  --line-rose: rgba(147, 83, 74, 0.6);
+  --line: rgba(251, 247, 238, 0.16);      /* neutral floral-white hairline */
+  --line-strong: rgba(251, 247, 238, 0.30);
+  --line-soft: rgba(251, 247, 238, 0.10);
+  --line-gold: rgba(177, 138, 68, 0.42);  /* bronze hairline */
+  --line-green: rgba(95, 116, 86, 0.6);
 
-  --focus-ring: rgba(126, 144, 121, 0.55);
+  --focus-ring: rgba(144, 165, 135, 0.55);
 
-  /* status (kept inside the palette) */
+  /* status */
   --positive: var(--green-400);
-  --critical: var(--rose-500);
+  --critical: #B4524A;   /* functional error red (outside the brand palette) */
 }
