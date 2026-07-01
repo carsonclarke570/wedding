@@ -1,0 +1,92 @@
+---
+interface Props {
+  quote: string;
+  cta: { label: string; href: string };
+}
+const { quote, cta } = Astro.props;
+---
+
+<div class="bridge" data-reveal>
+  <p class="bridge__quote">{quote}</p>
+  <span class="bridge__mark" aria-hidden="true">◆</span>
+  <a class="bridge__cta" href={cta.href}>
+    {cta.label}
+    <span class="bridge__arrow" aria-hidden="true"></span>
+  </a>
+</div>
+
+<style>
+  .bridge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    padding-block: clamp(var(--space-7), 8vw, var(--space-9));
+    text-align: center;
+  }
+
+  .bridge__quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--text-soft);
+    max-width: 40ch;
+    margin: 0;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .bridge__mark {
+    font-size: 7px;
+    color: var(--gold-500);
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  .bridge__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-deco);
+    font-size: 11px;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--green-300);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .bridge__cta:hover { color: var(--gold-300); }
+  .bridge__cta:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-shadow);
+    border-radius: var(--radius-sm);
+    color: var(--gold-300);
+  }
+
+  /* Arrow: fixed-width line + chevron; chevron nudges right on hover via transform */
+  .bridge__arrow {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: currentColor;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+  .bridge__arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(-45deg);
+  }
+  .bridge__cta:hover .bridge__arrow { transform: translateX(4px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bridge__cta,
+    .bridge__arrow { transition: none; }
+  }
+</style>

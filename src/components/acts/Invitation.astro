@@ -5,44 +5,74 @@ import { triquetra, wovenDivider } from '../../lib/knots.mjs';
 const veilKnot = triquetra({ size: 60, stroke: 'var(--gold-400)', gap: 'var(--bg)' });
 const v2Seal = triquetra({ size: 72, stroke: 'var(--gold-400)', gap: 'var(--bg)' });
 const v2Divider = wovenDivider({ width: 500 });
+// Smaller knots flank the central &; mirrored so gold rails face inward.
+const v2FocalKnot = wovenDivider({ width: 180 });
 ---
 
 <section id="invitation" class="act act--invitation" data-act="invitation" aria-labelledby="hero-title">
-    <div class="hero__content" data-hero-content>
-      <div class="reveal-1" aria-hidden="true" style="display: flex; justify-content: center; margin-bottom: var(--space-5);" set:html={v2Seal}></div>
-      <p class="hero__lead reveal-1">Together with their families</p>
-      <h1 class="hero__names" id="hero-title" aria-label="Warren and Carson">
-        <span class="hero__name reveal-2" aria-hidden="true">Warren</span>
-        <span class="hero__amp reveal-2" aria-hidden="true">&amp;</span>
-        <span class="hero__name reveal-2" aria-hidden="true">Carson</span>
-      </h1>
-      <div class="reveal-3" style="margin-top: var(--space-7); display: flex; flex-direction: column; align-items: center; gap: var(--space-4); width: min(100%, 500px); margin-inline: auto;">
-        <div set:html={v2Divider} style="width: 100%;"></div>
-        <p class="hero__date" style="margin: 0;">
-          <time datetime="2027-10-09">Saturday, the ninth of October</time>
-          <span class="hero__year">Two Thousand Twenty-Seven</span>
-        </p>
-        <p class="hero__place" style="margin: 0;">Rehoboth&nbsp;·&nbsp;Massachusetts</p>
-        <div set:html={v2Divider} style="width: 100%;"></div>
-      </div>
-      <ul class="chip-row hero__chips reveal-4" role="list">
-        <li class="chip" data-tone="green">Black Tie Optional</li>
-        <li class="chip" data-tone="bronze">Adults Only</li>
-        <li class="chip">Reply by 1 August 2027</li>
-      </ul>
-      <div class="hero__cta reveal-5">
-        <a class="gg-btn" data-variant="duo" href="/rsvp">RSVP</a>
-        <a class="gg-btn" data-variant="outline" href="#story">Our Story</a>
-      </div>
+  <h1 id="hero-title" class="sr-only">Warren and Carson</h1>
+
+  <div class="hero__content" data-hero-content>
+
+    <div class="hero__seal reveal-1" aria-hidden="true" set:html={v2Seal}></div>
+    <p class="hero__lead reveal-1">Together with their families</p>
+
+    <!-- Names row: Warren & Carson — one horizontal line on desktop -->
+    <div class="hero__names-row reveal-2" aria-hidden="true">
+      <span class="hero__name">Warren</span>
+      <span class="hero__amp reveal-3">&amp;</span>
+      <span class="hero__name">Carson</span>
     </div>
-    <a class="hero__cue reveal-5" data-hero-cue href="#story" aria-label="Scroll to our story">
-      <span class="hero__cue-word">Begin</span>
-      <span class="hero__cue-track" aria-hidden="true"><span class="hero__cue-dot"></span></span>
-    </a>
-    <div class="act__veil" data-hero-veil aria-hidden="true">
-      <span class="act__veil-mark" set:html={veilKnot}></span>
+
+    <!-- Date block -->
+    <div class="hero__date-block reveal-4">
+      <div class="hero__divider-row" set:html={v2Divider}></div>
+      <p class="hero__date">
+        <time datetime="2027-10-09">Saturday, the ninth of October</time>
+        <span class="hero__year">Two Thousand Twenty-Seven</span>
+      </p>
+      <p class="hero__place">Rehoboth&nbsp;·&nbsp;Massachusetts</p>
+      <div class="hero__divider-row" set:html={v2Divider}></div>
     </div>
-  </section>
+
+    <ul class="chip-row hero__chips reveal-5" role="list">
+      <li class="chip" data-tone="green">Black Tie Optional</li>
+      <li class="chip" data-tone="bronze">Adults Only</li>
+      <li class="chip">Reply by 1 August 2027</li>
+    </ul>
+
+    <div class="hero__cta reveal-5">
+      <a class="gg-btn" data-variant="duo" href="/rsvp">RSVP</a>
+      <a class="gg-btn" data-variant="outline" href="#story">Our Story</a>
+    </div>
+
+  </div>
+
+  <!-- Procession cue — fixed to viewport bottom, fades when leaving this act -->
+  <a class="hero__cue reveal-4" data-hero-cue href="#story" aria-label="Scroll to our story">
+    <span class="hero__cue-word">Begin</span>
+    <span class="hero__cue-track" aria-hidden="true"><span class="hero__cue-dot"></span></span>
+  </a>
+
+  <div class="act__veil" data-hero-veil aria-hidden="true">
+    <span class="act__veil-mark" set:html={veilKnot}></span>
+  </div>
+</section>
+
+<script>
+  const cue = document.querySelector<HTMLElement>('[data-hero-cue]');
+  const section = document.getElementById('invitation');
+  if (cue && section) {
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        cue.style.opacity = e.isIntersecting ? '' : '0';
+        cue.style.pointerEvents = e.isIntersecting ? '' : 'none';
+      },
+      { threshold: 0.1 }
+    );
+    obs.observe(section);
+  }
+</script>
 
 <style>
   .act--invitation {
@@ -53,44 +83,145 @@ const v2Divider = wovenDivider({ width: 500 });
     justify-content: center;
     text-align: center;
     min-height: 100svh;
-    padding-block: var(--space-9) var(--space-7);
+    padding-block: var(--space-9) var(--space-8);
     overflow: hidden;
   }
 
-  .hero__content { position: relative; z-index: 2; }
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-inline: var(--gutter);
+  }
   :global(html.cinema-on) .hero__content { will-change: transform, opacity; }
 
+  /* ── Triquetra seal ─────────────────────────────────────────────────────── */
+  .hero__seal { display: flex; justify-content: center; margin-bottom: var(--space-4); }
+  :global(.hero__seal svg) { display: block; }
+
+  /* ── Lead text ─────────────────────────────────────────────────────────── */
   .hero__lead {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: var(--fs-body-lg);
     color: var(--text-soft);
     letter-spacing: 0.02em;
-    margin-bottom: clamp(var(--space-5), 4vw, var(--space-6));
+    margin: 0 0 clamp(var(--space-5), 4vw, var(--space-6));
     text-shadow: 0 1px 10px var(--ink-900), 0 0 4px var(--ink-900);
   }
 
-  .hero__names {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0 clamp(var(--space-4), 3vw, var(--space-7));
-    margin: 0;
+  /* ── Names row: Warren [knot & knot] Carson on one horizontal line ─────── */
+  .hero__names-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+    gap: clamp(var(--space-3), 2.5vw, var(--space-5));
+    margin-block: clamp(var(--space-3), 2.5vw, var(--space-5));
+  }
+  .hero__names-row .hero__name:first-child { text-align: right; }
+  .hero__names-row .hero__name:last-child  { text-align: left; }
+
+  /* ── Names ───────────────────────────────────────────────────────────────── */
+  .hero__name {
+    display: block;
     font-family: var(--font-celtic);
     font-weight: var(--fw-regular);
-    font-size: clamp(42px, 10.5vw, 92px);
+    font-size: clamp(32px, 6vw, 72px);
     line-height: 1.04;
     letter-spacing: 0.01em;
-    text-wrap: balance;
+    color: var(--parchment-100);
+    min-width: 0;
   }
-  .hero__name { color: var(--parchment-100); }
+
+  /* ── Focal centerpiece: [knot] & [knot] ─────────────────────────────────── */
+  .hero__focal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(var(--space-2), 1.5vw, var(--space-4));
+  }
+
+  /* Each half-divider; the --mir variant flips so gold rails face the &. */
+  .hero__focal-knot {
+    display: block;
+    flex: 0 0 auto;
+    width: clamp(40px, 5vw, 80px);
+  }
+  .hero__focal-knot--mir { transform: scaleX(-1); }
+  :global(.hero__focal-knot svg) { display: block; width: 100%; height: auto; }
+
+  /* ── Ampersand — larger than the names, the visual anchor ──────────────── */
   .hero__amp {
     font-family: var(--font-ornament);
     color: var(--gold-400);
-    font-size: 0.86em;
-    text-shadow: 0 0 26px rgb(var(--gold-300-rgb) / 0.32);
+    font-size: clamp(56px, 13vw, 108px);
+    line-height: 1;
+    text-shadow: 0 0 40px rgb(var(--gold-300-rgb) / 0.4);
+    flex: 0 0 auto;
   }
+
+  /* ── Procession cue — fixed to viewport bottom ──────────────────────────── */
+  .hero__cue {
+    position: fixed;
+    bottom: clamp(var(--space-6), 5vw, var(--space-8));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-muted);
+    font-family: var(--font-deco);
+    font-size: 11px;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.5s ease;
+  }
+  .hero__cue:hover { color: var(--gold-300); }
+  .hero__cue:focus-visible {
+    outline: none;
+    color: var(--gold-300);
+    box-shadow: var(--focus-shadow);
+    border-radius: var(--radius-sm);
+  }
+  .hero__cue-word { display: block; }
+  .hero__cue-track {
+    width: 1px; height: 40px;
+    background: var(--line-strong);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__cue-dot {
+    position: absolute;
+    inset-inline: -1px;
+    top: 0;
+    height: 12px;
+    background: var(--gold-400);
+    animation: cue-fall 2.6s var(--ease-in-out) infinite;
+  }
+  @keyframes cue-fall {
+    0%   { transform: translateY(-14px); opacity: 0; }
+    35%  { opacity: 1; }
+    100% { transform: translateY(40px); opacity: 0; }
+  }
+
+  /* ── Date block ─────────────────────────────────────────────────────────── */
+  .hero__date-block {
+    width: min(100%, 500px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+  .hero__divider-row { width: 100%; }
+  :global(.hero__divider-row svg) { display: block; width: 100%; height: auto; }
 
   .hero__date {
     margin: 0;
@@ -102,6 +233,8 @@ const v2Divider = wovenDivider({ width: 500 });
     color: var(--parchment-200);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 6px;
   }
   .hero__year { font-size: 0.72em; color: var(--text-muted); letter-spacing: 0.14em; }
@@ -111,56 +244,20 @@ const v2Divider = wovenDivider({ width: 500 });
     letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: var(--gold-300);
+    margin: 0;
   }
 
-  .hero__chips { margin-top: var(--space-6); }
+  /* ── Chips + CTA ─────────────────────────────────────────────────────────── */
+  .hero__chips { margin-top: var(--space-5); }
   .hero__cta {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-4);
     justify-content: center;
-    margin-top: var(--space-7);
+    margin-top: var(--space-6);
   }
 
-  .hero__cue {
-    position: absolute;
-    bottom: clamp(var(--space-4), 4vh, var(--space-6));
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-3);
-    color: var(--text-muted);
-    font-family: var(--font-deco);
-    font-size: 11px;
-    letter-spacing: var(--ls-eyebrow);
-    text-transform: uppercase;
-  }
-  .hero__cue:hover { color: var(--gold-300); }
-  .hero__cue:focus-visible {
-    outline: none;
-    color: var(--gold-300);
-    box-shadow: var(--focus-shadow);
-    border-radius: var(--radius-sm);
-  }
-  .hero__cue-track { width: 1px; height: 40px; background: var(--line-strong); position: relative; overflow: hidden; }
-  .hero__cue-dot {
-    position: absolute;
-    inset-inline: -1px;
-    top: 0;
-    height: 12px;
-    background: var(--gold-400);
-    animation: cue-fall 2.6s var(--ease-in-out) infinite;
-  }
-  @keyframes cue-fall {
-    0% { transform: translateY(-14px); opacity: 0; }
-    35% { opacity: 1; }
-    100% { transform: translateY(40px); opacity: 0; }
-  }
-
-  /* ---- The veil (seam into Act I) ---- */
+  /* ── The veil (seam into Act I) ─────────────────────────────────────────── */
   .act__veil {
     position: absolute;
     inset: 0;
@@ -183,10 +280,14 @@ const v2Divider = wovenDivider({ width: 500 });
     background-size: 300px;
     opacity: 0.06;
   }
-  .act__veil-mark { position: relative; opacity: 0.9; filter: drop-shadow(0 0 18px rgb(var(--gold-300-rgb) / 0.4)); }
+  .act__veil-mark {
+    position: relative;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 18px rgb(var(--gold-300-rgb) / 0.4));
+  }
   .act__veil-mark :global(svg) { display: block; }
 
-  /* ── Gilded Kindle: gold radial bloom + scale from 96% ── */
+  /* ── Gilded Kindle bloom ─────────────────────────────────────────────────── */
   .act--invitation::after {
     content: '';
     position: absolute;
@@ -202,6 +303,7 @@ const v2Divider = wovenDivider({ width: 500 });
     100% { opacity: 0; transform: scale(1.9); }
   }
 
+  /* ── Staggered reveal ────────────────────────────────────────────────────── */
   .reveal-1,
   .reveal-2,
   .reveal-3,
@@ -225,22 +327,26 @@ const v2Divider = wovenDivider({ width: 500 });
     .act--invitation::after { display: none; }
   }
 
-  /* SVGs injected via set:html don't carry Astro scope attributes, so target globally. */
   :global(.hero__content svg) { max-width: 100%; height: auto; }
 
-  @media (max-width: 600px) {
-    .hero__content { width: calc(100% - var(--gutter) * 2); }
-    .hero__names { flex-direction: column; gap: var(--space-1); font-size: clamp(40px, 13vw, 60px); }
-    .hero__amp { font-size: 0.9em; line-height: 0.8; }
+  @media (max-width: 700px) {
+    .hero__names-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .hero__names-row .hero__name:first-child,
+    .hero__names-row .hero__name:last-child { text-align: center; }
+    .hero__focal { margin-block: clamp(var(--space-3), 2.5vw, var(--space-5)); }
+    .hero__name { font-size: clamp(40px, 13vw, 60px); }
+    .hero__amp  { font-size: clamp(50px, 16vw, 80px); }
+    .hero__focal-knot { width: clamp(60px, 12vw, 90px); }
     .hero__date { font-size: var(--fs-body); letter-spacing: 0.05em; }
   }
 
   @media (max-height: 640px) {
-    .act--invitation {
-      min-height: auto;
-      justify-content: flex-start;
-      padding-block: var(--space-6);
-    }
-    .hero__cue { display: none; }
+    .act--invitation { padding-block: var(--space-6); justify-content: flex-start; }
+    .hero__cue { display: none !important; }
   }
 </style>

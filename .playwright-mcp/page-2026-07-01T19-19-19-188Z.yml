@@ -1,0 +1,209 @@
+- generic [active] [ref=f4e1]:
+  - link "Skip to content" [ref=f4e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f4e3]:
+    - generic [ref=f4e4]:
+      - link "Warren and Carson — home" [ref=f4e5] [cursor=pointer]:
+        - /url: "#top"
+        - img [ref=f4e7]:
+          - generic [ref=f4e97]: W&C
+        - generic [ref=f4e98]: Warren & Carson
+      - navigation "Primary" [ref=f4e99]:
+        - list [ref=f4e100]:
+          - listitem [ref=f4e101]:
+            - link "Our Story" [ref=f4e102] [cursor=pointer]:
+              - /url: "#story"
+          - listitem [ref=f4e103]:
+            - link "The Day" [ref=f4e104] [cursor=pointer]:
+              - /url: "#day"
+          - listitem [ref=f4e105]:
+            - link "Travel & Stay" [ref=f4e106] [cursor=pointer]:
+              - /url: "#travel"
+          - listitem [ref=f4e107]:
+            - link "Registry" [ref=f4e108] [cursor=pointer]:
+              - /url: "#registry"
+        - link "RSVP" [ref=f4e109] [cursor=pointer]:
+          - /url: /rsvp
+  - navigation "The acts":
+    - list:
+      - listitem:
+        - link "I The Invitation" [ref=f4e110] [cursor=pointer]:
+          - /url: "#invitation"
+          - generic [ref=f4e111]: I
+          - generic [ref=f4e113]: The Invitation
+      - listitem:
+        - link "II The Two of Us" [ref=f4e114] [cursor=pointer]:
+          - /url: "#story"
+          - generic [ref=f4e115]: II
+          - generic [ref=f4e117]: The Two of Us
+      - listitem:
+        - link "III The Day" [ref=f4e118] [cursor=pointer]:
+          - /url: "#day"
+          - generic [ref=f4e119]: III
+          - generic [ref=f4e121]: The Day
+      - listitem:
+        - link "IV Getting There" [ref=f4e122] [cursor=pointer]:
+          - /url: "#travel"
+          - generic [ref=f4e123]: IV
+          - generic [ref=f4e125]: Getting There
+      - listitem:
+        - link "V With Our Thanks" [ref=f4e126] [cursor=pointer]:
+          - /url: "#registry"
+          - generic [ref=f4e127]: V
+          - generic [ref=f4e129]: With Our Thanks
+      - listitem:
+        - link "VI The Reply" [ref=f4e130] [cursor=pointer]:
+          - /url: "#rsvp"
+          - generic [ref=f4e131]: VI
+          - generic [ref=f4e133]: The Reply
+  - main [ref=f4e134]:
+    - region "Warren and Carson" [ref=f4e135]:
+      - heading "Warren and Carson" [level=1] [ref=f4e136]
+      - generic [ref=f4e137]:
+        - img [ref=f4e139]
+        - paragraph [ref=f4e158]: Together with their families
+        - generic [ref=f4e159]:
+          - generic [ref=f4e160]: Warren
+          - generic [ref=f4e161]:
+            - img [ref=f4e163]
+            - generic [ref=f4e180]: "&"
+            - img [ref=f4e182]
+          - generic [ref=f4e199]: Carson
+        - link "Scroll to our story" [ref=f4e200] [cursor=pointer]:
+          - /url: "#story"
+          - generic [ref=f4e201]: Begin
+        - generic [ref=f4e204]:
+          - img [ref=f4e206]
+          - paragraph [ref=f4e223]:
+            - time [ref=f4e224]: Saturday, the ninth of October
+            - generic [ref=f4e225]: Two Thousand Twenty-Seven
+          - paragraph [ref=f4e226]: Rehoboth · Massachusetts
+          - img [ref=f4e228]
+        - list [ref=f4e245]:
+          - listitem [ref=f4e246]: Black Tie Optional
+          - listitem [ref=f4e247]: Adults Only
+          - listitem [ref=f4e248]: Reply by 1 August 2027
+        - generic [ref=f4e249]:
+          - link "RSVP" [ref=f4e250] [cursor=pointer]:
+            - /url: /rsvp
+          - link "Our Story" [ref=f4e251] [cursor=pointer]:
+            - /url: "#story"
+      - generic:
+        - generic:
+          - img
+    - region "Nine years, and a great many dinners" [ref=f4e252]:
+      - generic [ref=f4e253]:
+        - generic [ref=f4e254]:
+          - paragraph [ref=f4e255]: The Two of Us
+          - heading "Nine years, and a great many dinners" [level=2] [ref=f4e256]
+        - generic [ref=f4e257]:
+          - generic [ref=f4e258]:
+            - paragraph [ref=f4e259]: After nine years, one very persistent cat, and a great many dinners, we are overjoyed to gather the people we love — and to begin the next of those nine years in front of you.
+            - paragraph [ref=f4e260]: "We met long before we knew where it would lead, and we have been writing the story ever since. There is far more of it than fits here: how we met, the question and the answer, and the cat who considers herself a third party to this engagement."
+            - link "Read how it happened" [ref=f4e261] [cursor=pointer]:
+              - /url: "#story"
+          - generic [ref=f4e262]:
+            - img [ref=f4e263]
+            - img [ref=f4e267]
+          - figure [ref=f4e286]:
+            - generic [ref=f4e288]:
+              - generic [ref=f4e289]: ✦
+              - text: Warren & Carson
+    - separator [ref=f4e290]:
+      - img [ref=f4e292]
+    - region "How the day will unfold" [ref=f4e309]:
+      - generic [ref=f4e310]:
+        - generic [ref=f4e311]:
+          - paragraph [ref=f4e312]: The Day
+          - heading "How the day will unfold" [level=2] [ref=f4e313]
+          - paragraph [ref=f4e314]: One Saturday in early autumn, in a corner of New England we love — here is where and when to find us.
+        - generic [ref=f4e315]:
+          - img [ref=f4e318]
+          - paragraph [ref=f4e337]: Saturday
+          - paragraph [ref=f4e338]:
+            - generic [ref=f4e339]: October
+            - generic [ref=f4e340]: "9"
+            - generic [ref=f4e341]: "2027"
+          - generic [ref=f4e342]:
+            - generic [ref=f4e343]: Rehoboth, Massachusetts
+            - generic [ref=f4e345]: Black Tie Optional
+          - paragraph [ref=f4e346]: The venue and the exact hour are being settled now — the moment they’re certain, you’ll find them here.
+        - list "The order of the day" [ref=f4e347]:
+          - listitem [ref=f4e348]:
+            - generic [ref=f4e349]: Ceremony
+            - generic [ref=f4e350]: Vows, before the people we love
+          - listitem [ref=f4e351]
+          - listitem [ref=f4e353]:
+            - generic [ref=f4e354]: Dinner
+            - generic [ref=f4e355]: A long table, well set
+          - listitem [ref=f4e356]
+          - listitem [ref=f4e358]:
+            - generic [ref=f4e359]: Dancing
+            - generic [ref=f4e360]: Until the candles are low
+    - separator [ref=f4e361]:
+      - img [ref=f4e363]
+    - region "Finding your way to us" [ref=f4e380]:
+      - generic [ref=f4e381]:
+        - generic [ref=f4e382]:
+          - paragraph [ref=f4e383]: Travel & Stay
+          - heading "Finding your way to us" [level=2] [ref=f4e384]
+          - paragraph [ref=f4e385]: Rehoboth sits just over the Rhode Island line — easy to reach, and worth lingering in for the weekend.
+        - generic [ref=f4e386]:
+          - article [ref=f4e387]:
+            - heading "Getting Here" [level=3] [ref=f4e388]
+            - generic [ref=f4e389]:
+              - generic [ref=f4e390]:
+                - term [ref=f4e391]: By air
+                - definition [ref=f4e392]: T. F. Green / Rhode Island (PVD) is about twenty-five minutes out; Boston Logan (BOS) about fifty.
+              - generic [ref=f4e393]:
+                - term [ref=f4e394]: By car
+                - definition [ref=f4e395]: Rehoboth is an easy drive from Providence, Boston, and the Cape. Parking will be plentiful.
+              - generic [ref=f4e396]:
+                - term [ref=f4e397]: Getting about
+                - definition [ref=f4e398]: A shuttle between the hotel block and the celebration is being arranged — details to come.
+          - article [ref=f4e399]:
+            - heading "Where to Stay" [level=3] [ref=f4e400]
+            - paragraph [ref=f4e401]: We’re holding a block of rooms nearby at a friendly rate. Once it’s confirmed, the hotel, the link, and the booking cutoff will live right here.
+            - paragraph [ref=f4e402]:
+              - generic [ref=f4e403]: Room block — coming soon
+            - link "Let us know you’re coming" [ref=f4e404] [cursor=pointer]:
+              - /url: "#rsvp"
+    - region "Your presence is the gift" [ref=f4e405]:
+      - generic [ref=f4e406]:
+        - img [ref=f4e409]
+        - paragraph [ref=f4e428]: Registry
+        - heading "Your presence is the gift" [level=2] [ref=f4e429]
+        - paragraph [ref=f4e430]: Truly — the whole point is to have you in the room. Should you wish to mark the occasion with something more, a registry is being put together (alphabetized, contentiously) and will appear here well before the day.
+        - link "Registry — coming soon" [ref=f4e435] [cursor=pointer]:
+          - /url: "#rsvp"
+        - paragraph [ref=f4e436]: For now, the kindest thing you can do is say you’ll come.
+    - region "We would be honored by your presence" [ref=f4e437]:
+      - generic [ref=f4e438]:
+        - img
+        - generic [ref=f4e439]:
+          - paragraph [ref=f4e440]: The Reply
+          - heading "We would be honored by your presence" [level=2] [ref=f4e441]
+          - paragraph [ref=f4e442]: Tell us you’ll be there — joyfully, we hope. The reply takes a moment, and it means a great deal to us as we set the table.
+          - link "Send our reply" [ref=f4e444] [cursor=pointer]:
+            - /url: /rsvp
+          - paragraph [ref=f4e445]: Kindly reply by the first of August
+  - contentinfo "Warren & Carson" [ref=f4e446]:
+    - generic [ref=f4e447]:
+      - img [ref=f4e449]:
+        - generic [ref=f4e539]: W&C
+      - paragraph [ref=f4e540]: Warren & Carson
+      - paragraph [ref=f4e541]:
+        - time [ref=f4e542]: 9 October 2027
+        - text: · Rehoboth, Massachusetts
+      - navigation "Footer" [ref=f4e543]:
+        - link "Our Story" [ref=f4e544] [cursor=pointer]:
+          - /url: "#story"
+        - link "The Day" [ref=f4e545] [cursor=pointer]:
+          - /url: "#day"
+        - link "Travel & Stay" [ref=f4e546] [cursor=pointer]:
+          - /url: "#travel"
+        - link "Registry" [ref=f4e547] [cursor=pointer]:
+          - /url: "#registry"
+        - link "RSVP" [ref=f4e548] [cursor=pointer]:
+          - /url: /rsvp
+      - paragraph [ref=f4e551]: Made with love, for the people we love.

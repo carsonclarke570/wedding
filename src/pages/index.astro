@@ -10,7 +10,7 @@ import Travel from '../components/Travel.astro';
 import Registry from '../components/Registry.astro';
 import RsvpCta from '../components/RsvpCta.astro';
 import Footer from '../components/Footer.astro';
-import Divider from '../components/Divider.astro';
+import Bridge from '../components/Bridge.astro';
 ---
 
 <Layout>
@@ -21,10 +21,11 @@ import Divider from '../components/Divider.astro';
   <main id="main">
     <Invitation />
     <StoryWeave />
-    <Divider />
+    <Bridge quote="Enough about us — for now, at least." cta={{ label: "The Day", href: "#day" }} />
     <Day />
-    <Divider />
+    <Bridge quote="Getting to us is, we promise, the easy part." cta={{ label: "Travel & Stay", href: "#travel" }} />
     <Travel />
+    <Bridge quote="Your presence is genuinely the whole point. We mean that." cta={{ label: "The Registry", href: "#registry" }} />
     <Registry />
     <RsvpCta />
   </main>
