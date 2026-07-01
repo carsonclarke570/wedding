@@ -8,9 +8,11 @@
 
 @import url('../../design-system/styles.css');
 
-/* ---- Ornament-set preview switch (temporary) ----
-   Components emit both the woven and plaited ornament; `data-ornament` on
-   <html> reveals one. Remove this block (and the toggle) once a set is chosen. */
+/* ---- Ornament switch — woven is the chosen set ----
+   Components emit both variants; `data-ornament="woven"` on <html> shows
+   woven and hides plaited. To preview plaited, flip the attribute or restore
+   OrnamentToggle in Layout.astro (import + render, add the localStorage
+   inline script, and re-add the ornamentToggle prop). */
 .orn-woven,
 .orn-plaited { display: contents; }
 [data-ornament='plaited'] .orn-woven { display: none !important; }
@@ -147,7 +149,7 @@ main { position: relative; z-index: var(--z-raised); }
   flex: 0 0 auto;
   transform: rotate(45deg);
   background: var(--gold-400);
-  box-shadow: 0 0 0 4px rgba(177, 138, 68, 0.14);
+  box-shadow: 0 0 0 4px rgb(var(--gold-500-rgb) / 0.14);
 }
 
 /* ============================================================
@@ -223,6 +225,9 @@ main { position: relative; z-index: var(--z-raised); }
   flex-wrap: wrap;
   gap: var(--space-3);
   justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 .chip {
   display: inline-flex;
@@ -256,8 +261,8 @@ main { position: relative; z-index: var(--z-raised); }
   border: 1px solid var(--line-gold);
   border-radius: var(--radius-sm);
   background:
-    radial-gradient(120% 90% at 30% 15%, rgba(95, 116, 86, 0.28), transparent 60%),
-    radial-gradient(120% 90% at 80% 90%, rgba(141, 107, 49, 0.26), transparent 60%),
+    radial-gradient(120% 90% at 30% 15%, rgb(var(--green-400-rgb) / 0.28), transparent 60%),
+    radial-gradient(120% 90% at 80% 90%, rgb(var(--gold-600-rgb) / 0.26), transparent 60%),
     var(--ink-600);
   overflow: hidden;
   isolation: isolate;
@@ -313,7 +318,7 @@ main { position: relative; z-index: var(--z-raised); }
 }
 @keyframes gem-glint {
   0%, 100% { opacity: 0.85; }
-  50% { opacity: 1; filter: drop-shadow(0 0 6px rgba(230, 203, 142, 0.55)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 6px rgb(var(--gold-300-rgb) / 0.55)); }
 }
 
 /* Scroll-driven reveal: only when the browser supports view timelines AND
@@ -343,4 +348,15 @@ main { position: relative; z-index: var(--z-raised); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* ---- Screen-reader only: visually hide while remaining accessible ---- */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

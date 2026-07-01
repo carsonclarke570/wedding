@@ -49,20 +49,21 @@ const glints = [
     opacity: 0.024;
   }
 
-  .stage__aura { inset: -20% -10%; will-change: transform, opacity; }
+  .stage__aura { inset: -20% -10%; }
+  :global(html.cinema-on) .stage__aura { will-change: transform, opacity; }
   /* Warm candle-pool at the top for the Invitation. */
   .stage__aura--hero {
     background:
-      radial-gradient(46% 40% at 50% 8%, rgba(177, 138, 68, 0.16), transparent 66%),
-      radial-gradient(38% 34% at 16% 4%, rgba(95, 116, 86, 0.15), transparent 60%),
-      radial-gradient(38% 34% at 84% 4%, rgba(141, 107, 49, 0.13), transparent 60%);
+      radial-gradient(46% 40% at 50% 8%, rgb(var(--gold-500-rgb) / 0.16), transparent 66%),
+      radial-gradient(38% 34% at 16% 4%, rgb(var(--green-400-rgb) / 0.15), transparent 60%),
+      radial-gradient(38% 34% at 84% 4%, rgb(var(--gold-600-rgb) / 0.13), transparent 60%);
     opacity: 0.9;
   }
   /* A cooler greenery bloom rising from the left for The Two of Us. */
   .stage__aura--story {
     background:
-      radial-gradient(40% 44% at 22% 62%, rgba(95, 116, 86, 0.20), transparent 64%),
-      radial-gradient(34% 40% at 82% 40%, rgba(177, 138, 68, 0.10), transparent 62%);
+      radial-gradient(40% 44% at 22% 62%, rgb(var(--green-400-rgb) / 0.20), transparent 64%),
+      radial-gradient(34% 40% at 82% 40%, rgb(var(--gold-500-rgb) / 0.10), transparent 62%);
     opacity: 0;
   }
 
@@ -73,7 +74,7 @@ const glints = [
     transform: rotate(45deg);
     background: var(--gold-300);
     opacity: 0.28;
-    box-shadow: 0 0 10px 1px rgba(230, 203, 142, 0.35);
+    box-shadow: 0 0 10px 1px rgb(var(--gold-300-rgb) / 0.35);
     animation: glint-breathe calc(var(--gd, 1) * 6s) var(--ease-in-out) infinite;
   }
   @keyframes glint-breathe {

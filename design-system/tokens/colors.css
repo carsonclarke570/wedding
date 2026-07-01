@@ -48,7 +48,15 @@
          with bronze, symmetric (foliage ⟷ bronze ⟷ foliage) ---- */
   --duo-sheen: linear-gradient(115deg, #47593F 0%, #90A587 22%, #CDAA61 47%, #E6CB8E 53%, #90A587 78%, #5F7456 100%); /* @kind color */
   --duo-line: linear-gradient(120deg, var(--green-500) 0%, var(--gold-500) 50%, var(--green-500) 100%); /* @kind color */
-  --duo-soft: linear-gradient(120deg, rgba(95,116,86,0.22) 0%, rgba(177,138,68,0.14) 50%, rgba(95,116,86,0.22) 100%); /* @kind color */
+  --duo-soft: linear-gradient(120deg, rgb(var(--green-400-rgb) / 0.22) 0%, rgb(var(--gold-500-rgb) / 0.14) 50%, rgb(var(--green-400-rgb) / 0.22) 100%); /* @kind color */
+
+  /* ---- RGB channel companions (for semitransparent tints via rgb() / drop-shadow) ---- */
+  --gold-300-rgb: 230 203 142;
+  --gold-400-rgb: 205 170 97;
+  --gold-500-rgb: 177 138 68;
+  --gold-600-rgb: 141 107 49;
+  --green-400-rgb: 95 116 86;
+  --green-500-rgb: 71 89 63;
 
   /* ===================== SEMANTIC ALIASES ===================== */
   --bg: var(--ink-800);

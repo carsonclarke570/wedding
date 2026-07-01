@@ -1,23 +1,19 @@
 ---
 import '../styles/app.css';
 
-import OrnamentToggle from '../components/OrnamentToggle.astro';
-
 interface Props {
   title?: string;
   description?: string;
-  ornamentToggle?: boolean;
 }
 
 const {
   title = 'Warren & Carson — October 9, 2027',
   description = 'Together with their families, Warren and Carson invite you to celebrate their wedding in Rehoboth, Massachusetts, on the ninth of October, 2027.',
-  ornamentToggle = true,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-ornament="plaited">
+<html lang="en" data-ornament="woven">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,18 +22,6 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#121110" />
-
-    {/* Restore the chosen ornament set before paint (temporary preview switch). */}
-    <script is:inline>
-      try {
-        var q = new URLSearchParams(location.search).get('ornament');
-        var m = q || localStorage.getItem('gg-ornament');
-        if (m === 'woven' || m === 'plaited') {
-          document.documentElement.dataset.ornament = m;
-          if (q) localStorage.setItem('gg-ornament', q);
-        }
-      } catch (e) {}
-    </script>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -51,7 +35,6 @@ const {
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <slot />
-    {ornamentToggle && <OrnamentToggle />}
 
     <style>
       .skip-link {
@@ -73,8 +56,5 @@ const {
       }
       .skip-link:focus { transform: none; }
     </style>
-  <!-- impeccable-live-start -->
-<script is:inline src="http://localhost:8400/live.js"></script>
-<!-- impeccable-live-end -->
-</body>
+  </body>
 </html>

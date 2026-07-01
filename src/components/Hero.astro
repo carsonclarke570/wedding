@@ -76,9 +76,9 @@ const archPlaited = archBraid(820, 360, { hand: 'geometric', cordGradId: 'ggArch
     z-index: 0;
     pointer-events: none;
     background:
-      radial-gradient(42% 52% at 50% 42%, rgba(177, 138, 68, 0.16), transparent 70%),
-      radial-gradient(40% 46% at 24% 54%, rgba(95, 116, 86, 0.20), transparent 72%),
-      radial-gradient(40% 46% at 76% 54%, rgba(141, 107, 49, 0.18), transparent 72%);
+      radial-gradient(42% 52% at 50% 42%, rgb(var(--gold-500-rgb) / 0.16), transparent 70%),
+      radial-gradient(40% 46% at 24% 54%, rgb(var(--green-400-rgb) / 0.20), transparent 72%),
+      radial-gradient(40% 46% at 76% 54%, rgb(var(--gold-600-rgb) / 0.18), transparent 72%);
     filter: blur(6px);
     opacity: 0;
     animation: soft-in var(--dur-veil) var(--ease-out) 80ms forwards;
@@ -99,7 +99,7 @@ const archPlaited = archBraid(820, 360, { hand: 'geometric', cordGradId: 'ggArch
     z-index: -1;
     opacity: 0;
     overflow: visible;
-    filter: drop-shadow(0 0 22px rgba(177, 138, 68, 0.16));
+    filter: drop-shadow(0 0 22px rgb(var(--gold-500-rgb) / 0.16));
     animation: soft-in var(--dur-veil) var(--ease-out) 120ms forwards;
     pointer-events: none;
   }
@@ -138,7 +138,7 @@ const archPlaited = archBraid(820, 360, { hand: 'geometric', cordGradId: 'ggArch
     font-weight: var(--fw-regular);
     color: var(--gold-400);
     font-size: 0.9em;
-    text-shadow: 0 0 26px rgba(230, 203, 142, 0.32);
+    text-shadow: 0 0 26px rgb(var(--gold-300-rgb) / 0.32);
   }
 
   .hero__frame {
@@ -225,16 +225,6 @@ const archPlaited = archBraid(820, 360, { hand: 'geometric', cordGradId: 'ggArch
   .reveal-3 { animation-delay: 540ms; }
   .reveal-4 { animation-delay: 700ms; }
   .reveal-5 { animation-delay: 860ms; }
-
-  .sr-only {
-    position: absolute;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
 
   @media (prefers-reduced-motion: reduce) {
     .hero__aura { opacity: 1; animation: none; }
