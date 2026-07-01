@@ -21,13 +21,37 @@ export const PLAIT_HEX = {
   bronze: '#8D6B31',
 };
 
+/* Corner-fade mask: full braid at corners, fading to `midOpacity` at edge midpoints.
+   Produces a "taper" effect where the knotwork concentrates at corners. */
+function cornerTaper(content, w, h, tile, midOpacity) {
+  const r = tile * 3.2;
+  const uid = `t${w}x${h}`;
+  const corners = [[0, 0], [w, 0], [0, h], [w, h]];
+  const grads = corners.map(([cx, cy], i) =>
+    `<radialGradient id="${uid}_g${i}" cx="${cx}" cy="${cy}" r="${r}" gradientUnits="userSpaceOnUse">` +
+    `<stop offset="0" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/>` +
+    `</radialGradient>`
+  ).join('');
+  const fills = corners.map((_, i) =>
+    `<rect width="${w}" height="${h}" fill="url(#${uid}_g${i})"/>`
+  ).join('');
+  return (
+    `<defs>${grads}<mask id="${uid}_m">` +
+    `<rect width="${w}" height="${h}" fill="white" fill-opacity="${midOpacity}"/>` +
+    `${fills}</mask></defs>` +
+    `<g mask="url(#${uid}_m)">${content}</g>`
+  );
+}
+
 /* ---- Frame border: a real Celtic knot ring in the angular ENGRAVED hand.
    The geometric twin of frameBraid() — same (w,h)->fragment signature, same
    grid-graph engine, but straight mitered cords with a fine bg channel. */
-export function plaitFrame(w, h, { cord = PLAIT_HEX.gold, bg = PLAIT_HEX.bg } = {}) {
+export function plaitFrame(w, h, { cord = PLAIT_HEX.gold, bg = PLAIT_HEX.bg, strandProp, maxTile, taper, taperStrength } = {}) {
   if (w < 120 || h < 120) return '';
-  const tile = Math.max(40, Math.min(60, Math.round(Math.min(w, h) / 3.2)));
-  return knotFrame(w, h, { hand: 'geometric', cord, bg, tile, strandProp: 0.5 });
+  const cap = maxTile ?? 60;
+  const tile = Math.max(24, Math.min(cap, Math.round(Math.min(w, h) / 3.2)));
+  const content = knotFrame(w, h, { hand: 'geometric', cord, bg, tile, strandProp: strandProp ?? 0.5 });
+  return taper ? cornerTaper(content, w, h, tile, taperStrength ?? 0.12) : content;
 }
 
 /* ---- Seal: a small square knot crest in the engraved hand. */

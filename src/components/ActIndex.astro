@@ -1,0 +1,127 @@
+---
+// Gilt & Grove — Act index
+// A slim gilded rail of the six acts, fixed to the right edge. The fast path
+// for a guest who just wants a specific answer: each mark scrolls to its act
+// and reveals its name on hover/focus; the act in view is gilded. Purely
+// supplementary to the nav — hidden on small screens where the nav menu owns
+// navigation.
+const acts = [
+  { id: 'invitation', num: 'I', label: 'The Invitation' },
+  { id: 'story', num: 'II', label: 'The Two of Us' },
+  { id: 'day', num: 'III', label: 'The Day' },
+  { id: 'travel', num: 'IV', label: 'Getting There' },
+  { id: 'registry', num: 'V', label: 'With Our Thanks' },
+  { id: 'rsvp', num: 'VI', label: 'The Reply' },
+];
+---
+
+<nav class="act-index" data-act-index aria-label="The acts">
+  <ul>
+    {acts.map((a) => (
+      <li>
+        <a href={`#${a.id}`}>
+          <span class="act-index__num">{a.num}</span>
+          <span class="act-index__tick" aria-hidden="true"></span>
+          <span class="act-index__label">{a.label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .act-index {
+    position: fixed;
+    top: 50%;
+    right: clamp(12px, 2vw, 28px);
+    transform: translateY(-50%);
+    z-index: var(--z-sticky);
+    pointer-events: none;
+  }
+  .act-index ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .act-index a {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    padding: 7px 2px;
+    text-decoration: none;
+    color: var(--text-muted);
+  }
+
+  .act-index__num {
+    order: 3;
+    width: 2.4ch;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--graphite-300);
+    transition: color var(--dur-base) var(--ease-out);
+  }
+  .act-index__tick {
+    order: 2;
+    width: 30px;
+    height: 1.5px;
+    background: var(--line-strong);
+    transform: scaleX(0.53);
+    transform-origin: right center;
+    transition: transform var(--dur-base) var(--ease-out),
+                background-color var(--dur-base) var(--ease-out);
+  }
+  .act-index__label {
+    order: 1;
+    font-family: var(--font-deco);
+    font-size: 11px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--gold-300);
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity var(--dur-base) var(--ease-out),
+                transform var(--dur-base) var(--ease-out);
+  }
+
+  /* Hover / focus: name slides in, mark warms. */
+  .act-index a:hover .act-index__label,
+  .act-index a:focus-visible .act-index__label {
+    opacity: 1;
+    transform: none;
+  }
+  .act-index a:hover .act-index__tick,
+  .act-index a:focus-visible .act-index__tick {
+    transform: scaleX(0.87);
+    background: var(--gold-400);
+  }
+  .act-index a:hover .act-index__num,
+  .act-index a:focus-visible .act-index__num {
+    color: var(--gold-300);
+  }
+  .act-index a:focus-visible {
+    outline: none;
+  }
+  .act-index a:focus-visible .act-index__tick { box-shadow: 0 0 0 3px var(--focus-ring); }
+
+  /* Current act (set by cinema.ts, and a reasonable static default off). */
+  .act-index a.is-current .act-index__num { color: var(--gold-300); }
+  .act-index a.is-current .act-index__tick {
+    transform: scaleX(1);
+    background: var(--gilt-sheen);
+  }
+
+  @media (max-width: 1024px) {
+    .act-index { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .act-index__label { transform: none; }
+  }
+</style>

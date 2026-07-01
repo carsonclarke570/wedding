@@ -22,27 +22,27 @@ Success looks like: every guest finds their answer in seconds, replies without f
 
 The voice is first-person plural and affectionate — the couple speaking *to* their guests ("We would be honored by your presence"; "the people we love"). The tone borrows ceremonial diction from classic invitations ("Together with their families," "Joyfully Accepts / Regretfully Declines," "Kindly reply by August 1") and keeps it human with small, specific, slightly witty details. Never stiff, never saccharine, no emoji.
 
-Visually it fuses **Art Deco** (angular geometric framing, sunbursts, tracked caps) with **Celtic knotwork** (interlaced trinity knots, woven corners, endless-knot lattices). The two grooms are carried as **twin color leads in equal measure** — deep pine green (Warren) and deep garnet/oxblood (Carson) — bridged by **antique gold as a fine metallic tie** (the "&" between their names, divider centers, corner ornaments). Emotional goals: belonging, anticipation, quiet grandeur.
+Visually it leans **Celtic** — interlaced trinity knots, woven corners, and endless-knot lattices, with insular Uncial lettering for the names — set in **angular, architectural framing** (the structural Deco inheritance: crisp rules, near-sharp corners, sunburst halos). The palette is drawn from a candle-lit night barn: **warm near-black grounds** (wrought iron, chairs), **floral white** (tablecloths, blooms), **eucalyptus greenery as the single lead** (the hung greenery), and **antique bronze/gold as a fine metallic tie** (the "&" between their names, divider knots, corner ornaments, small glints) — never a dominant fill. Emotional goals: belonging, anticipation, quiet grandeur.
 
 ## Anti-references
 
 - **The pre-made wedding template** (Zola / The Knot / Squarespace-wedding look) — stocky, samey, fill-in-the-blank. The whole reason this brand exists is to *not* look generated from a theme picker.
-- **Cursive scripts and heavy botanicals** — flowing calligraphy headlines, floral borders, eucalyptus sprigs, watercolor washes. The romance here is carried by knotwork, metal, and type — never script or foliage.
+- **Cursive scripts and botanical illustration** — flowing calligraphy headlines, floral borders, eucalyptus sprigs, watercolor washes. The greenery here lives in the *palette*, not in drawn foliage; the romance is carried by knotwork, metal, and type — never script or botanical filigree.
 - **Cold / corporate / SaaS-landing** sterility — clinical whitespace, businesslike neutrality. Too clinical for a wedding.
 - **Loud / cluttered** layouts where the actual information (date, RSVP) is hard to find.
-- Color traps to avoid: bright/emerald greens, pink roses, bluish-purple gradients, neon, pure white, pastels, and large flat gold fills (gold is a tie, not a surface).
+- Color traps to avoid: bright/emerald greens, bluish-purple gradients, neon, pure white, pastels, and large flat gold fills (bronze is a tie, not a surface).
 
 ## Design Principles
 
 1. **A personal invitation, not a form.** Every screen should read as the couple addressing the guest. Warmth and ceremony first; the logistics are delivered *through* that voice, not bolted beside it.
-2. **Twin leads, equal billing.** Green and garnet represent Warren and Carson and appear in genuinely equal measure — solo, mirrored per section, or blended as the green⟷garnet duo. Neither groom's color dominates; gold only ever ties them together.
+2. **Greenery leads, bronze ties.** Eucalyptus green is the single lead color, carrying sections solo or paired with floral white on the dark ground; **bronze/gold is only ever the fine metallic tie** — the "&", divider knots, corner ornaments, glints — never a dominant surface fill.
 3. **Ornament over decoration.** The Deco-Celtic knotwork is a deliberate, generated system (frames, corners, dividers, lattice) — not clip-art sprinkled on top. If an ornament isn't doing structural or symbolic work, it doesn't belong.
 4. **Regal but legible.** Dark candle-lit grounds and high-contrast type create grandeur, but the guest's answer — date, place, dress code, RSVP — must always be the fastest thing to find and read.
 5. **Restraint is the luxury.** Near-sharp corners, few gradients, gold used sparingly, slow graceful motion with no bounce. The richness comes from precision and material, not from adding more.
 
 ## Accessibility & Inclusion
 
-- Target **WCAG 2.1 AA**. The palette is built for it on dark grounds — body parchment text and the lighter green/rose accent ramps (`--green-300`, `--rose-300`) are chosen to clear AA; verify any new color pairing (especially small tracked eyebrows and placeholder text) against its actual background before shipping.
+- Target **WCAG 2.1 AA**. The palette is built for it on dark grounds — body parchment text and the lighter greenery accent ramp (`--green-300`) are chosen to clear AA; verify any new color pairing (especially small tracked eyebrows and placeholder text) against its actual background before shipping.
 - **Reduced motion is required**, not optional: every reveal, cross-fade, and the 700ms "veil" needs a `prefers-reduced-motion: reduce` alternative (crossfade or instant). Motion is already slow and non-bouncy by design.
-- Don't rely on color alone to convey the two grooms or RSVP accept/decline state — pair it with labels and shape (the system already uses rotated-square radios, gold-knot marks, and text labels).
+- Don't rely on color alone to convey RSVP accept/decline state — pair it with labels and shape (the system already uses rotated-square radios, gold-knot marks, and text labels).
 - Wide age range and mobile-first arrival: generous tap targets, real font sizes (18px body floor), and copy that's plain about the essentials even while the voice is ceremonial.

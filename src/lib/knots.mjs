@@ -18,11 +18,32 @@ const f = (n) => n.toFixed(2);
    A hollow rectangular knotwork border (grid-graph engine), woven in the
    smooth "rope" hand. Ties a genuine interlaced corner at each corner and
    runs a continuous over/under plait along every edge. Fits any w×h box. */
-export function frameBraid(w, h, { cord = 'var(--metal)', bg = 'var(--bg)' } = {}) {
+function cornerTaper(content, w, h, tile, midOpacity) {
+  const r = tile * 3.2;
+  const uid = `tb${w}x${h}`;
+  const corners = [[0, 0], [w, 0], [0, h], [w, h]];
+  const grads = corners.map(([cx, cy], i) =>
+    `<radialGradient id="${uid}_g${i}" cx="${cx}" cy="${cy}" r="${r}" gradientUnits="userSpaceOnUse">` +
+    `<stop offset="0" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/>` +
+    `</radialGradient>`
+  ).join('');
+  const fills = corners.map((_, i) =>
+    `<rect width="${w}" height="${h}" fill="url(#${uid}_g${i})"/>`
+  ).join('');
+  return (
+    `<defs>${grads}<mask id="${uid}_m">` +
+    `<rect width="${w}" height="${h}" fill="white" fill-opacity="${midOpacity}"/>` +
+    `${fills}</mask></defs>` +
+    `<g mask="url(#${uid}_m)">${content}</g>`
+  );
+}
+
+export function frameBraid(w, h, { cord = 'var(--metal)', bg = 'var(--bg)', strandProp, maxTile, taper, taperStrength } = {}) {
   if (w < 120 || h < 120) return '';
-  // Coarser tiles on small boxes so the ring never crowds the content.
-  const tile = Math.max(40, Math.min(60, Math.round(Math.min(w, h) / 3.2)));
-  return knotFrame(w, h, { hand: 'smooth', cord, bg, tile, strandProp: 0.52, curveStrength: 0.34 });
+  const cap = maxTile ?? 60;
+  const tile = Math.max(24, Math.min(cap, Math.round(Math.min(w, h) / 3.2)));
+  const content = knotFrame(w, h, { hand: 'smooth', cord, bg, tile, strandProp: strandProp ?? 0.52, curveStrength: 0.34 });
+  return taper ? cornerTaper(content, w, h, tile, taperStrength ?? 0.12) : content;
 }
 
 /* ---- Rising-sun halo — a real knot arch + rays ------------------------

@@ -1,0 +1,9 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [
+      "src/layouts/Layout.astro"
+    ],
+    "ignoreValues": []
+  }
+}

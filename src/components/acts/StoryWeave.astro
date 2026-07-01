@@ -1,0 +1,123 @@
+---
+import { triquetra } from '../../lib/knots.mjs';
+
+// ACT I — The Two of Us.
+// Two cords — greenery and bronze — draw down the spine and tie into a
+// trinity knot at the centre, while the words and the portrait settle in from
+// either side. Two people, one knot. cinema.ts drives the draw + tie; without
+// it, the knot is simply shown, already tied.
+const seal = triquetra({ size: 66, stroke: 'var(--metal)', gap: 'var(--bg)' });
+---
+
+<section id="story" class="act act--story section" data-act="story" data-lead="green" aria-labelledby="story-title">
+  <div class="container">
+    <div class="section__head weave__head" data-reveal>
+      <p class="eyebrow">The Two of Us</p>
+      <h2 id="story-title">Nine years, and a great many dinners</h2>
+    </div>
+
+    <div class="weave__grid">
+      <div class="weave__copy" data-weave-col="start">
+        <p class="weave__lede">
+          After nine years, one very persistent cat, and a great many dinners, we are
+          overjoyed to gather the people we love — and to begin the next of those nine
+          years in front of you.
+        </p>
+        <p class="weave__body">
+          We met long before we knew where it would lead, and we have been writing the
+          story ever since. There is far more of it than fits here: how we met, the
+          question and the answer, and the cat who considers herself a third party to
+          this engagement.
+        </p>
+        <a class="gg-link weave__more" href="#story">Read how it happened</a>
+      </div>
+
+      <!-- The spine: two interlacing cords + the trinity seal that ties them -->
+      <div class="weave__spine" aria-hidden="true">
+        <svg class="weave__cords" viewBox="0 0 120 440" preserveAspectRatio="xMidYMid meet" fill="none">
+          <path
+            data-weave-cord
+            d="M60 10 C 26 74, 94 138, 60 220 S 26 366, 60 430"
+            stroke="var(--green-400)" stroke-width="3" stroke-linecap="round"
+          ></path>
+          <path
+            data-weave-cord
+            d="M60 10 C 94 74, 26 138, 60 220 S 94 366, 60 430"
+            stroke="var(--gold-500)" stroke-width="3" stroke-linecap="round"
+          ></path>
+        </svg>
+        <span class="weave__seal" data-weave-seal set:html={seal}></span>
+      </div>
+
+      <figure class="weave__figure" data-weave-col="end">
+        <div class="photo-slot">
+          <figcaption class="photo-slot__caption">
+            <span class="mark" aria-hidden="true">&#10022;</span>
+            Warren &amp; Carson
+          </figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .act--story { position: relative; }
+  .weave__head { margin-bottom: clamp(var(--space-6), 6vw, var(--space-8)); }
+
+  .weave__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(84px, 10vw, 140px) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(var(--space-4), 4vw, var(--space-7));
+  }
+
+  .weave__copy { max-width: 52ch; will-change: transform, opacity; }
+  .weave__lede {
+    font-size: var(--fs-body-lg);
+    color: var(--parchment-200);
+    font-style: italic;
+    margin-top: 0;
+  }
+  .weave__body { color: var(--text-muted); }
+  .weave__more {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-family: var(--font-deco);
+    font-size: 13px;
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: var(--lead-strong);
+  }
+  .weave__more::after { background: var(--lead); }
+
+  .weave__spine { position: relative; align-self: stretch; display: grid; place-items: center; min-height: 320px; }
+  .weave__cords {
+    width: 100%;
+    height: 100%;
+    max-height: 440px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+  }
+  .weave__seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    filter: drop-shadow(0 0 16px rgba(177, 138, 68, 0.35));
+    will-change: transform, opacity;
+  }
+  .weave__seal :global(svg) { display: block; }
+
+  .weave__figure { margin: 0; max-width: 400px; justify-self: end; will-change: transform, opacity; }
+  .weave__figure .photo-slot { box-shadow: var(--shadow-lg); }
+
+  @media (max-width: 820px) {
+    .weave__grid { grid-template-columns: 1fr; gap: var(--space-6); }
+    .weave__spine { min-height: 0; order: -1; }
+    .weave__cords { display: none; }
+    .weave__seal { position: static; transform: none; }
+    .weave__figure { max-width: 420px; justify-self: center; margin-inline: auto; }
+    .weave__copy { max-width: none; }
+  }
+</style>

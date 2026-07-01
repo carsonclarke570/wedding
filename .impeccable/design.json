@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-01T00:00:00.000Z",
+  "title": "Design System: Gilt & Grove",
+  "extensions": {
+    "colorMeta": {
+      "ink-900": {
+        "role": "neutral",
+        "displayName": "Wrought Iron — Deep",
+        "canonical": "#0A0A08",
+        "tonalRamp": ["#0A0A08", "#121110", "#1B1A17", "#262320", "#33302A", "#4A463F", "#67625A", "#8D887E"]
+      },
+      "ink-800": {
+        "role": "neutral",
+        "displayName": "Wrought Iron — Page Bg",
+        "canonical": "#121110",
+        "tonalRamp": ["#040403", "#0A0A08", "#121110", "#1B1A17", "#262320", "#33302A", "#4A463F", "#67625A"]
+      },
+      "ink-700": {
+        "role": "neutral",
+        "displayName": "Wrought Iron — Surface",
+        "canonical": "#1B1A17",
+        "tonalRamp": ["#040403", "#0A0A08", "#121110", "#1B1A17", "#262320", "#33302A", "#4A463F", "#67625A"]
+      },
+      "ink-600": {
+        "role": "neutral",
+        "displayName": "Wrought Iron — Card",
+        "canonical": "#262320",
+        "tonalRamp": ["#040403", "#0A0A08", "#121110", "#1B1A17", "#262320", "#33302A", "#4A463F", "#67625A"]
+      },
+      "ink-500": {
+        "role": "neutral",
+        "displayName": "Wrought Iron — Hover",
+        "canonical": "#33302A",
+        "tonalRamp": ["#040403", "#0A0A08", "#121110", "#1B1A17", "#262320", "#33302A", "#4A463F", "#67625A"]
+      },
+      "graphite-400": {
+        "role": "neutral",
+        "displayName": "Graphite — Deep",
+        "canonical": "#67625A",
+        "tonalRamp": ["#1A1814", "#2E2B26", "#4A463F", "#67625A", "#8D887E", "#B5AFA4", "#C9BFAC", "#E2DAC9"]
+      },
+      "graphite-200": {
+        "role": "neutral",
+        "displayName": "Graphite — Muted Text",
+        "canonical": "#B5AFA4",
+        "tonalRamp": ["#1A1814", "#2E2B26", "#4A463F", "#67625A", "#8D887E", "#B5AFA4", "#C9BFAC", "#E2DAC9"]
+      },
+      "parchment-100": {
+        "role": "neutral",
+        "displayName": "Floral White",
+        "canonical": "#FBF7EE",
+        "tonalRamp": ["#4A453E", "#67625A", "#8D887E", "#B5AFA4", "#C9BFAC", "#E2DAC9", "#F2ECDF", "#FBF7EE"]
+      },
+      "parchment-400": {
+        "role": "neutral",
+        "displayName": "Floral White — Soft",
+        "canonical": "#C9BFAC",
+        "tonalRamp": ["#4A453E", "#67625A", "#8D887E", "#B5AFA4", "#C9BFAC", "#E2DAC9", "#F2ECDF", "#FBF7EE"]
+      },
+      "gold-300": {
+        "role": "tertiary",
+        "displayName": "Champagne Bronze",
+        "canonical": "#E6CB8E",
+        "tonalRamp": ["#1A1006", "#2E1C0A", "#4A3018", "#664C22", "#8D6B31", "#B18A44", "#CDAA61", "#E6CB8E"]
+      },
+      "gold-500": {
+        "role": "tertiary",
+        "displayName": "Antique Bronze — Core",
+        "canonical": "#B18A44",
+        "tonalRamp": ["#1A1006", "#2E1C0A", "#4A3018", "#664C22", "#8D6B31", "#B18A44", "#CDAA61", "#E6CB8E"]
+      },
+      "gold-700": {
+        "role": "tertiary",
+        "displayName": "Deep Bronze",
+        "canonical": "#664C22",
+        "tonalRamp": ["#1A1006", "#2E1C0A", "#4A3018", "#664C22", "#8D6B31", "#B18A44", "#CDAA61", "#E6CB8E"]
+      },
+      "green-300": {
+        "role": "primary",
+        "displayName": "Eucalyptus — Lightest",
+        "canonical": "#90A587",
+        "tonalRamp": ["#0D1B0B", "#162815", "#22301E", "#34432E", "#47593F", "#5F7456", "#90A587", "#C2D3BF"]
+      },
+      "green-400": {
+        "role": "primary",
+        "displayName": "Eucalyptus — Accent",
+        "canonical": "#5F7456",
+        "tonalRamp": ["#0D1B0B", "#162815", "#22301E", "#34432E", "#47593F", "#5F7456", "#90A587", "#C2D3BF"]
+      },
+      "green-500": {
+        "role": "primary",
+        "displayName": "Eucalyptus — Core",
+        "canonical": "#47593F",
+        "tonalRamp": ["#0D1B0B", "#162815", "#22301E", "#34432E", "#47593F", "#5F7456", "#90A587", "#C2D3BF"]
+      },
+      "green-700": {
+        "role": "primary",
+        "displayName": "Deep Foliage",
+        "canonical": "#22301E",
+        "tonalRamp": ["#0D1B0B", "#162815", "#22301E", "#34432E", "#47593F", "#5F7456", "#90A587", "#C2D3BF"]
+      },
+      "critical": {
+        "role": "functional",
+        "displayName": "Error Red",
+        "canonical": "#B4524A",
+        "tonalRamp": ["#2A0C0A", "#4A1714", "#6B2520", "#8F342F", "#B4524A", "#CC7570", "#E0A09C", "#F2CEC9"]
+      }
+    },
+    "gradients": [
+      {
+        "name": "--duo-sheen",
+        "value": "linear-gradient(115deg, #47593F 0%, #90A587 22%, #CDAA61 47%, #E6CB8E 53%, #90A587 78%, #5F7456 100%)",
+        "purpose": "The couple's foil signature. Used for names in Uncial Antiqua (via background-clip: text) and as the fill for the primary Duo CTA button. The most distinctive visual element — protect by keeping it rare."
+      },
+      {
+        "name": "--gilt-sheen",
+        "value": "linear-gradient(135deg, #664C22 0%, #B18A44 28%, #E6CB8E 50%, #B18A44 72%, #664C22 100%)",
+        "purpose": "Metallic bronze foil. Used for the '&' ornament and small gilt labels (via background-clip: text). Never a fill for large areas."
+      },
+      {
+        "name": "--gilt-sheen-soft",
+        "value": "linear-gradient(120deg, #8D6B31 0%, #CDAA61 45%, #E6CB8E 55%, #8D6B31 100%)",
+        "purpose": "Softer metallic sweep for subtle ornamental contexts."
+      },
+      {
+        "name": "--duo-line",
+        "value": "linear-gradient(120deg, #47593F 0%, #B18A44 50%, #47593F 100%)",
+        "purpose": "Gradient border for important frame rules and the divider component."
+      },
+      {
+        "name": "--duo-soft",
+        "value": "linear-gradient(120deg, rgba(95,116,86,0.22) 0%, rgba(177,138,68,0.14) 50%, rgba(95,116,86,0.22) 100%)",
+        "purpose": "Faint duo wash for subtle section backgrounds or overlay states."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "--shadow-sm",
+        "value": "0 1px 2px rgba(0,0,0,0.45)",
+        "purpose": "Subtle lift for chips, tags, and small elements."
+      },
+      {
+        "name": "--shadow-md",
+        "value": "0 6px 20px rgba(0,0,0,0.5)",
+        "purpose": "Elevated cards at rest; sticky nav on mobile."
+      },
+      {
+        "name": "--shadow-lg",
+        "value": "0 18px 48px rgba(0,0,0,0.58)",
+        "purpose": "Maximum lift — hovered interactive cards, open modals and flyout panels."
+      },
+      {
+        "name": "--glow-gold",
+        "value": "0 0 0 1px rgba(177,138,68,0.35), 0 8px 30px rgba(177,138,68,0.12)",
+        "purpose": "Bronze emphasis halo. Duo and gold buttons on hover; primary CTA card at rest for warmth."
+      },
+      {
+        "name": "--glow-gold-strong",
+        "value": "0 0 0 1px rgba(230,203,142,0.6), 0 10px 36px rgba(177,138,68,0.22)",
+        "purpose": "Intensified focus indicator for inputs and form controls."
+      },
+      {
+        "name": "--shadow-inset",
+        "value": "inset 0 1px 0 rgba(244,239,227,0.05)",
+        "purpose": "Subtle inner highlight for surfaces."
+      }
+    ],
+    "motion": [
+      {
+        "name": "--ease-out",
+        "value": "cubic-bezier(0.22, 0.61, 0.36, 1)",
+        "purpose": "Default easing for all state transitions. Slow deceleration, no bounce."
+      },
+      {
+        "name": "--ease-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Balanced easing for elements that enter and exit (modals, overlays)."
+      },
+      {
+        "name": "--dur-fast",
+        "value": "160ms",
+        "purpose": "Micro-interactions: hover color shifts, link underline draws."
+      },
+      {
+        "name": "--dur-base",
+        "value": "260ms",
+        "purpose": "Standard transitions: card lifts, border color changes, input focus."
+      },
+      {
+        "name": "--dur-slow",
+        "value": "440ms",
+        "purpose": "Page-section reveals and larger element transitions."
+      },
+      {
+        "name": "--dur-veil",
+        "value": "700ms",
+        "purpose": "Curtain reveals — the full-page cross-fade on page load or section entry."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "560px", "note": "--container-sm" },
+      { "name": "md", "value": "820px", "note": "--container-md" },
+      { "name": "lg", "value": "1120px", "note": "--container-lg; primary max-width for content" },
+      { "name": "xl", "value": "1320px", "note": "--container-xl; wide layouts only" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button — Duo (Signature)",
+      "kind": "button",
+      "refersTo": "button-duo",
+      "description": "The couple's foil CTA. Greenery-to-bronze-to-greenery gradient fill. Reserved for the single primary action per screen (RSVP, View Our Story).",
+      "html": "<button class=\"ds-btn-duo\">RSVP Now</button>",
+      "css": ".ds-btn-duo { font-family: 'Cinzel', 'Times New Roman', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #0A0A08; background: linear-gradient(115deg, #47593F 0%, #90A587 22%, #CDAA61 47%, #E6CB8E 53%, #90A587 78%, #5F7456 100%); border: none; border-radius: 2px; padding: 14px 36px; cursor: pointer; transition: filter 260ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 260ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 160ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-btn-duo:hover { filter: brightness(1.08); box-shadow: 0 0 0 1px rgba(177,138,68,0.35), 0 8px 30px rgba(177,138,68,0.12); } .ds-btn-duo:active { transform: translateY(1px); } .ds-btn-duo:focus-visible { outline: none; box-shadow: 0 0 0 2px #121110, 0 0 0 4px rgba(144,165,135,0.55); } .ds-btn-duo:disabled { opacity: 0.42; cursor: not-allowed; filter: none; box-shadow: none; }"
+    },
+    {
+      "name": "Button — Green",
+      "kind": "button",
+      "refersTo": "button-green",
+      "description": "Solid eucalyptus fill. Secondary CTA — use when a duo button is the primary action on the same screen.",
+      "html": "<button class=\"ds-btn-green\">View Lodging</button>",
+      "css": ".ds-btn-green { font-family: 'Cinzel', 'Times New Roman', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #FBF7EE; background: #5F7456; border: none; border-radius: 2px; padding: 14px 36px; cursor: pointer; transition: filter 260ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 260ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 160ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-btn-green:hover { filter: brightness(1.14); box-shadow: 0 0 0 1px #5F7456, 0 8px 26px rgba(71,89,63,0.4); } .ds-btn-green:active { transform: translateY(1px); } .ds-btn-green:focus-visible { outline: none; box-shadow: 0 0 0 2px #121110, 0 0 0 4px rgba(144,165,135,0.55); } .ds-btn-green:disabled { opacity: 0.42; cursor: not-allowed; filter: none; box-shadow: none; }"
+    },
+    {
+      "name": "Button — Outline",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Transparent with floral-white hairline border. Use for secondary actions adjacent to a primary CTA.",
+      "html": "<button class=\"ds-btn-outline\">Learn More</button>",
+      "css": ".ds-btn-outline { font-family: 'Cinzel', 'Times New Roman', serif; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #90A587; background: transparent; border: 1px solid rgba(251,247,238,0.16); border-radius: 2px; padding: 14px 36px; cursor: pointer; transition: border-color 260ms cubic-bezier(0.22, 0.61, 0.36, 1), color 260ms cubic-bezier(0.22, 0.61, 0.36, 1), background 260ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 160ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-btn-outline:hover { border-color: #90A587; color: #90A587; background: rgba(95,116,86,0.1); } .ds-btn-outline:active { transform: translateY(1px); } .ds-btn-outline:focus-visible { outline: none; box-shadow: 0 0 0 2px #121110, 0 0 0 4px rgba(144,165,135,0.55); }"
+    },
+    {
+      "name": "Input / Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Hairline-bordered on ink-700 ground. Gilt glow on focus. Placeholder stays visibly below body text.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your full name\" />",
+      "css": ".ds-input { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; font-weight: 400; color: #FBF7EE; background: #1B1A17; border: 1px solid rgba(251,247,238,0.16); border-radius: 2px; padding: 12px 16px; width: 100%; outline: none; letter-spacing: 0.005em; transition: border-color 260ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 260ms cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-input::placeholder { color: #67625A; } .ds-input:hover { border-color: rgba(251,247,238,0.22); } .ds-input:focus { border-color: rgba(251,247,238,0.30); box-shadow: 0 0 0 3px rgba(177,138,68,0.16); }"
+    },
+    {
+      "name": "Card — Dark",
+      "kind": "card",
+      "description": "Default card on the ink ground. Bronze hairline border, lifts on hover.",
+      "html": "<div class=\"ds-card\"><p class=\"ds-eyebrow\">Save the Date</p><h3 class=\"ds-card__title\">Warren &amp; Carson</h3><p class=\"ds-card__body\">October 9, 2027 · Rehoboth, Massachusetts</p></div>",
+      "css": ".ds-card { background: #262320; border: 1px solid rgba(177,138,68,0.42); border-radius: 2px; padding: 32px; transition: border-color 260ms cubic-bezier(0.22,0.61,0.36,1), box-shadow 260ms cubic-bezier(0.22,0.61,0.36,1), transform 260ms cubic-bezier(0.22,0.61,0.36,1); } .ds-card:hover { border-color: rgba(251,247,238,0.30); box-shadow: 0 18px 48px rgba(0,0,0,0.58); transform: translateY(-2px); } .ds-card__title { font-family: 'Cinzel', 'Times New Roman', serif; font-size: clamp(22px, 3vw, 27px); font-weight: 600; color: #FBF7EE; margin: 0 0 8px; line-height: 1.2; text-wrap: balance; } .ds-card__body { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; color: #C9BFAC; margin: 0; line-height: 1.55; } .ds-eyebrow { font-family: 'Cinzel', 'Times New Roman', serif; font-size: 13px; letter-spacing: 0.34em; text-transform: uppercase; color: #90A587; display: inline-block; margin: 0 0 12px; }"
+    },
+    {
+      "name": "Card — Parchment",
+      "kind": "card",
+      "description": "Cream surface for content that reads as a paper insert on the dark ground. All text restores to ink colors.",
+      "html": "<div class=\"ds-card-parchment\"><p class=\"ds-eyebrow-parchment\">Registry</p><h3 class=\"ds-card-parchment__title\">Gift Registry</h3><p class=\"ds-card-parchment__body\">We are grateful for your presence. Should you wish to give a gift, we have registered at the links below.</p></div>",
+      "css": ".ds-card-parchment { background: #FBF7EE; border: 1px solid rgba(71,89,63,0.2); border-radius: 2px; padding: 32px; } .ds-card-parchment__title { font-family: 'Cinzel', 'Times New Roman', serif; font-size: clamp(22px, 3vw, 27px); font-weight: 600; color: #121110; margin: 0 0 8px; line-height: 1.2; text-wrap: balance; } .ds-card-parchment__body { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; color: #1B1A17; margin: 0; line-height: 1.55; } .ds-eyebrow-parchment { font-family: 'Cinzel', 'Times New Roman', serif; font-size: 13px; letter-spacing: 0.34em; text-transform: uppercase; color: #34432E; display: inline-block; margin: 0 0 12px; }"
+    },
+    {
+      "name": "Celtic Names Title",
+      "kind": "custom",
+      "description": "The couple's names in Uncial Antiqua with the duo-sheen foil. The most distinctive element; use only once per page in the hero.",
+      "html": "<h1 class=\"ds-celtic-title\">Warren <span class=\"ds-gilt-amp\">&amp;</span> Carson</h1>",
+      "css": ".ds-celtic-title { font-family: 'Uncial Antiqua', 'Cinzel', serif; font-size: clamp(40px, 8.2vw, 72px); font-weight: 400; line-height: 1.04; letter-spacing: 0.04em; background: linear-gradient(115deg, #47593F 0%, #90A587 22%, #CDAA61 47%, #E6CB8E 53%, #90A587 78%, #5F7456 100%); -webkit-background-clip: text; background-clip: text; color: transparent; text-wrap: balance; margin: 0; } .ds-gilt-amp { background: linear-gradient(135deg, #664C22 0%, #B18A44 28%, #E6CB8E 50%, #B18A44 72%, #664C22 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }"
+    },
+    {
+      "name": "Ornamental Rule",
+      "kind": "custom",
+      "description": "The signature full-width divider: greenery hairline → bronze diamond → gold hairline. Used between sections and as an accent break.",
+      "html": "<div class=\"ds-rule\"><div class=\"ds-rule__diamond\"></div></div>",
+      "css": ".ds-rule { display: flex; align-items: center; gap: 12px; margin: 32px 0; } .ds-rule::before, .ds-rule::after { content: ''; flex: 1; height: 1px; } .ds-rule::before { background: linear-gradient(90deg, transparent, #5F7456); } .ds-rule::after { background: linear-gradient(90deg, #B18A44, transparent); } .ds-rule__diamond { width: 7px; height: 7px; transform: rotate(45deg); background: #B18A44; box-shadow: 0 0 0 3px rgba(177,138,68,0.18); flex-shrink: 0; }"
+    },
+    {
+      "name": "Link",
+      "kind": "custom",
+      "description": "In-body link with left-to-right gold underline draw on hover. The default link treatment in prose and card bodies.",
+      "html": "<a class=\"ds-link\" href=\"#\">View lodging options</a>",
+      "css": ".ds-link { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; color: #90A587; text-decoration: none; position: relative; transition: color 160ms cubic-bezier(0.22,0.61,0.36,1); } .ds-link::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 100%; height: 1px; background: #5F7456; transform: scaleX(0); transform-origin: left; transition: transform 160ms cubic-bezier(0.22,0.61,0.36,1); } .ds-link:hover { color: #E6CB8E; } .ds-link:hover::after { transform: scaleX(1); }"
+    },
+    {
+      "name": "Eyebrow",
+      "kind": "custom",
+      "description": "Cinzel tracked-uppercase kicker. A deliberate brand system — the Deco inscription feel. Use sparingly: once or twice per section, not on every heading.",
+      "html": "<span class=\"ds-eyebrow-util\">Our Story</span>",
+      "css": ".ds-eyebrow-util { font-family: 'Cinzel', 'Times New Roman', serif; font-size: 13px; letter-spacing: 0.34em; text-transform: uppercase; color: #90A587; display: inline-block; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Candlelit Bower",
+    "overview": "Gilt & Grove is built from a single atmospheric moment: stepping across the threshold of a night barn lit by candles. Wrought iron goes warm in firelight; eucalyptus hung from the rafters catches the glow; tablecloths of floral white float beneath bronze lanterns. The design holds that feeling — dark, regal, and wholly alive — before the ceremony has even begun. Every surface decision flows from this scene.\n\nThe visual system pairs two historical registers that belong together: insular Celtic knotwork (the woven permanence of interlace, the trefoil knot binding the names) set inside angular Art Deco framing (crisp rules, notched corners, sunburst halos). Neither element is decoration. The knotwork is structural — generated by an algorithm, not clip-art — and the Deco geometry is the armature that keeps it from becoming folk art. Together they read as formal and handcrafted at once, which is exactly what this wedding is.\n\nThe palette is committed: dark near-black grounds and eucalyptus greenery as the single lead, with bronze used only as the fine metallic tie. Motion is slow and graceful — no bounce, no overshoot. The type system holds three faces in extreme contrast: Celtic insular Uncial display for the couple's names, inscriptional Roman caps for every structural element, and a warm high-contrast serif for the prose that carries their voice.",
+    "keyCharacteristics": [
+      "Warm near-black grounds — wrought iron and chairs at night; never pure tech-black, never light",
+      "Eucalyptus greenery as the single lead color — the hung greenery of the barn",
+      "Antique bronze as the fine metallic tie — the '&', divider knots, corner ornaments; never a dominant fill",
+      "Celtic knotwork as structural, generated ornament — never botanical filigree or clip-art",
+      "Angular Deco framing — near-sharp corners (3px default), crisp hairlines, sunburst halos",
+      "Slow, graceful motion — cubic-bezier(0.22, 0.61, 0.36, 1), 160–700ms durations, no bounce",
+      "Three-face type system in deliberate contrast — Celtic display / Roman caps / humanist serif"
+    ],
+    "rules": [
+      {
+        "name": "The Bronze Tie Rule",
+        "body": "Bronze and gold appear on the '&', divider knots, corner ornaments, and as glow halos in focus states. They are never a dominant surface fill, never a button background on their own, never a section background. Their rarity is what makes them feel precious.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark Ground Rule",
+        "body": "Every page surface uses --ink-800 (#121110) or a darker ink step as its primary ground. Parchment appears only as a card variant on an otherwise dark page — never as a full-page background.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Borders are always 1–2px and semi-transparent (16–30% opacity floral-white, 42% bronze, or 60% green). No solid opaque borders. The Deco geometry lives in the presence of the line, not its weight.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three-Face Pact",
+        "body": "Uncial Antiqua for the couple's names only. Cinzel for everything structural — headings, labels, nav, eyebrows. Cormorant Garamond for everything spoken — body copy, captions, story prose. Mixing voice roles breaks the system immediately.",
+        "section": "typography"
+      },
+      {
+        "name": "The Italic Emphasis Rule",
+        "body": "In Cormorant body copy, emphasis is always <em> (italic), never <strong> (bold). The face's high-contrast hairlines make italic the natural emphasis register; bold reads as size change, not stress.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Script Rule",
+        "body": "No cursive or handwritten typefaces appear anywhere in this system. Romance is carried by knotwork, metal, and type — never by letterform affectation.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Shadows are earned by hover, active state, or intentional structural promotion. The exception: --glow-gold on the primary CTA at rest is a warmth invitation, not an elevation signal.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Ink Ramp Rule",
+        "body": "Depth is primarily expressed through the ink ramp — --ink-900 → --ink-800 (bg) → --ink-700 (surface) → --ink-600 (card) → --ink-500 (hover). Drop shadows reinforce this tonal layering; they never substitute for it.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use eucalyptus green (--green-300 through --green-500) as the single lead color. Greenery carries sections solo or paired with floral white on the dark ground.",
+      "Do verify WCAG AA for every new color pairing — especially 13px tracked eyebrows and input placeholders — against their actual background before shipping.",
+      "Do use knotwork for structural or symbolic work only. An ornament that isn't doing structural or symbolic work doesn't belong.",
+      "Do keep corners near-sharp. Default corner radius is --radius-md (3px); most structure uses 0–2px. True pills are reserved for chip components only.",
+      "Do write button labels in tracked Cinzel uppercase with --ls-label (0.18em). This is what makes CTAs feel ceremonial rather than clinical.",
+      "Do include a prefers-reduced-motion: reduce alternative (crossfade or instant) for every animation.",
+      "Do use Cormorant Garamond italic — not bold — for emphasis in body copy.",
+      "Do cap body line length at 65–75ch. Apply text-wrap: balance on h1–h3 and text-wrap: pretty on prose.",
+      "Do use data-lead=\"green\" / data-lead=\"bronze\" on sections for a warm/cool rhythm; don't hardcode accent colors per-section."
+    ],
+    "donts": [
+      "Don't make this look like a recognizable wedding template — Zola, The Knot, Squarespace-Wedding. The entire point of Gilt & Grove is to look unmistakably theirs, not generated from a theme picker.",
+      "Don't use cursive scripts, handwritten fonts, or botanical illustration. No calligraphy headlines, floral borders, eucalyptus-sprig drawings, or watercolor washes. Romance is carried by knotwork, metal, and type.",
+      "Don't use bronze/gold as a dominant surface fill, full button background, or section background. Bronze is the metallic tie. Its rarity is what makes it feel precious.",
+      "Don't use bright/emerald green, bluish-purple gradients, neon, pure white (#FFFFFF), pastels, or large flat gold fills.",
+      "Don't create a cold, corporate, or SaaS-landing feel — no harsh whitespace, businesslike neutrality, or clinical sterility.",
+      "Don't let the logistics (date, place, dress code, RSVP) become hard to find. Grandeur and legibility must coexist.",
+      "Don't use drop shadows decoratively. Shadows and glow appear only as responses to state (hover, focus, promoted panels).",
+      "Don't introduce a fourth typeface. The system has exactly three — Uncial Antiqua, Cinzel, Cormorant Garamond.",
+      "Don't use --critical (#B4524A) for anything except form validation errors. It is the only color outside the brand palette.",
+      "Don't paste Celtic clip-art. Every knotwork element should be generated by the knot engine or be one of the approved SVG assets."
+    ]
+  }
+}

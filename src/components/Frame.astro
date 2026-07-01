@@ -72,11 +72,16 @@ const style = pad ? `--frame-pad:${pad}` : undefined;
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
     const tone = el.dataset.tone || 'duo';
     const surface = el.dataset.surface || 'var(--bg)';
-    const mode = document.documentElement.dataset.ornament || 'plaited';
+    const strandProp = el.dataset.strandProp ? parseFloat(el.dataset.strandProp) : undefined;
+    const maxTile = el.dataset.maxTile ? parseFloat(el.dataset.maxTile) : undefined;
+    const taper = 'taper' in el.dataset;
+    const taperStrength = el.dataset.taperStrength ? parseFloat(el.dataset.taperStrength) : undefined;
+    const globalMode = document.documentElement.dataset.ornament || 'plaited';
+    const mode = el.dataset.hand || globalMode;
     svg.innerHTML =
       mode === 'woven'
-        ? frameBraid(w, h, { cord: toneCord[tone] || 'var(--metal)', bg: surface })
-        : plaitFrame(w, h, { cord: plaitCord[tone] || '#B18A44', bg: '#121110' });
+        ? frameBraid(w, h, { cord: toneCord[tone] || 'var(--metal)', bg: surface, strandProp, maxTile, taper, taperStrength })
+        : plaitFrame(w, h, { cord: plaitCord[tone] || '#B18A44', bg: '#121110', strandProp, maxTile, taper, taperStrength });
   }
 
   const frames = document.querySelectorAll<HTMLElement>('[data-gg-frame]');
@@ -85,6 +90,18 @@ const style = pad ? `--frame-pad:${pad}` : undefined;
       for (const e of entries) paint(e.target as HTMLElement);
     });
     frames.forEach((el) => { paint(el); ro.observe(el); });
+    new MutationObserver((mutations) => {
+      for (const mut of mutations) {
+        for (const node of mut.addedNodes) {
+          if (!(node instanceof HTMLElement)) continue;
+          const added = [
+            ...(node.matches('[data-gg-frame]') ? [node as HTMLElement] : []),
+            ...Array.from(node.querySelectorAll<HTMLElement>('[data-gg-frame]')),
+          ];
+          added.forEach((el) => { paint(el); ro.observe(el); });
+        }
+      }
+    }).observe(document.body, { childList: true, subtree: true });
   } else {
     frames.forEach(paint);
     window.addEventListener('resize', () => frames.forEach(paint));

@@ -1,0 +1,269 @@
+---
+import { triquetra, wovenDivider } from '../../lib/knots.mjs';
+
+// ACT 0 — The Invitation.
+const veilKnot = triquetra({ size: 60, stroke: 'var(--gold-400)', gap: 'var(--bg)' });
+const v2Seal = triquetra({ size: 72, stroke: 'var(--gold-400)', gap: 'var(--bg)' });
+const v2Divider = wovenDivider({ width: 500 });
+---
+
+<section id="invitation" class="act act--invitation" data-act="invitation" aria-labelledby="hero-title">
+    <div class="hero__content" data-hero-content>
+      <div class="reveal-1" aria-hidden="true" style="display: flex; justify-content: center; margin-bottom: var(--space-5);" set:html={v2Seal}></div>
+      <p class="hero__lead reveal-1">Together with their families</p>
+      <h1 class="hero__names" id="hero-title">
+        <span class="hero__name reveal-2">Warren</span>
+        <span class="hero__amp reveal-2" aria-hidden="true">&amp;</span>
+        <span class="hero__name reveal-2">Carson</span>
+        <span class="sr-only">Warren and Carson</span>
+      </h1>
+      <div class="reveal-3" style="margin-top: var(--space-7); display: flex; flex-direction: column; align-items: center; gap: var(--space-4); width: min(100%, 500px); margin-inline: auto;">
+        <div set:html={v2Divider} style="width: 100%;"></div>
+        <p class="hero__date" style="margin: 0;">
+          <time datetime="2027-10-09">Saturday, the ninth of October</time>
+          <span class="hero__year">Two Thousand Twenty-Seven</span>
+        </p>
+        <p class="hero__place" style="margin: 0;">Rehoboth&nbsp;·&nbsp;Massachusetts</p>
+        <div set:html={v2Divider} style="width: 100%;"></div>
+      </div>
+      <div class="chip-row hero__chips reveal-4">
+        <span class="chip" data-tone="green">Black Tie Optional</span>
+        <span class="chip" data-tone="bronze">Adults Only</span>
+        <span class="chip">Kindly Reply by August 1</span>
+      </div>
+      <div class="hero__cta reveal-5">
+        <a class="gg-btn" data-variant="duo" href="/rsvp">RSVP</a>
+        <a class="gg-btn" data-variant="outline" href="#story">Our Story</a>
+      </div>
+    </div>
+    <a class="hero__cue reveal-5" data-hero-cue href="#story" aria-label="Scroll to our story">
+      <span class="hero__cue-word">Begin</span>
+      <span class="hero__cue-track" aria-hidden="true"><span class="hero__cue-dot"></span></span>
+    </a>
+    <div class="act__veil" data-hero-veil aria-hidden="true">
+      <span class="act__veil-mark" set:html={veilKnot}></span>
+    </div>
+  </section>
+
+<style>
+  .act--invitation {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100svh;
+    padding-block: var(--space-9) var(--space-7);
+    overflow: hidden;
+  }
+
+  .hero__content { position: relative; z-index: 2; will-change: transform, opacity; }
+
+  .hero__halo {
+    position: absolute;
+    left: 50%;
+    top: clamp(-24px, -3vw, -8px);
+    width: min(94%, 720px);
+    transform: translateX(-50%);
+    z-index: -1;
+    filter: drop-shadow(0 0 22px rgba(177, 138, 68, 0.16));
+    opacity: 0;
+    animation: soft-in var(--dur-veil) var(--ease-out) 120ms forwards;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+  .hero__halo svg { display: block; width: 100%; height: auto; overflow: visible; }
+  @keyframes soft-in { to { opacity: 1; } }
+
+  .hero__lead {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--fs-body-lg);
+    color: var(--text-soft);
+    letter-spacing: 0.02em;
+    margin-bottom: clamp(var(--space-5), 4vw, var(--space-6));
+    text-shadow: 0 1px 10px var(--ink-900), 0 0 4px var(--ink-900);
+  }
+
+  .hero__names {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 clamp(var(--space-4), 3vw, var(--space-7));
+    margin: 0;
+    font-family: var(--font-celtic);
+    font-weight: var(--fw-regular);
+    font-size: clamp(42px, 10.5vw, 92px);
+    line-height: 1.04;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+  }
+  .hero__name { color: var(--parchment-100); }
+  .hero__amp {
+    font-family: var(--font-ornament);
+    color: var(--gold-400);
+    font-size: 0.86em;
+    text-shadow: 0 0 26px rgba(230, 203, 142, 0.32);
+  }
+
+  .hero__frame {
+    width: min(100%, 500px);
+    margin: clamp(var(--space-6), 5vw, var(--space-7)) auto 0;
+  }
+  .hero__date {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-regular);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--parchment-200);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hero__year { font-size: 0.72em; color: var(--text-muted); letter-spacing: 0.14em; }
+  .hero__place {
+    margin: var(--space-4) 0 0;
+    font-family: var(--font-deco);
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--gold-300);
+  }
+
+  .hero__chips { margin-top: var(--space-6); }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-top: var(--space-7);
+  }
+
+  .hero__cue {
+    position: absolute;
+    bottom: clamp(var(--space-4), 4vh, var(--space-6));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-muted);
+    font-family: var(--font-deco);
+    font-size: 11px;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+  }
+  .hero__cue:hover { color: var(--gold-300); }
+  .hero__cue-track { width: 1px; height: 40px; background: var(--line-strong); position: relative; overflow: hidden; }
+  .hero__cue-dot {
+    position: absolute;
+    inset-inline: -1px;
+    top: 0;
+    height: 12px;
+    background: var(--gold-400);
+    animation: cue-fall 2.6s var(--ease-in-out) infinite;
+  }
+  @keyframes cue-fall {
+    0% { transform: translateY(-14px); opacity: 0; }
+    35% { opacity: 1; }
+    100% { transform: translateY(40px); opacity: 0; }
+  }
+
+  /* ---- The veil (seam into Act I) ---- */
+  .act__veil {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    transform: translateY(105%);
+    background:
+      radial-gradient(60% 50% at 50% 50%, rgba(177, 138, 68, 0.12), transparent 70%),
+      linear-gradient(120deg, var(--green-700) 0%, var(--green-600) 34%, var(--gold-700) 62%, var(--green-600) 100%);
+    box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    will-change: transform;
+  }
+  .act__veil::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../../../design-system/assets/pattern-tile.svg');
+    background-size: 300px;
+    opacity: 0.06;
+  }
+  .act__veil-mark { position: relative; opacity: 0.9; filter: drop-shadow(0 0 18px rgba(230, 203, 142, 0.4)); }
+  .act__veil-mark :global(svg) { display: block; }
+
+  /* ── Gilded Kindle: gold radial bloom + scale from 96% ── */
+  .act--invitation::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(55% 40% at 50% 44%, rgba(205, 170, 97, 0.30) 0%, transparent 65%);
+    animation: v2-bloom 2.4s cubic-bezier(0.16, 1, 0.3, 1) 60ms both;
+  }
+  @keyframes v2-bloom {
+    0%   { opacity: 0; transform: scale(0.4); }
+    25%  { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.9); }
+  }
+
+  .reveal-1,
+  .reveal-2,
+  .reveal-3,
+  .reveal-4,
+  .reveal-5 { opacity: 0; animation: v2-kindle 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .reveal-1 { animation-delay: 180ms; }
+  .reveal-2 { animation-delay: 380ms; }
+  .reveal-3 { animation-delay: 580ms; }
+  .reveal-4 { animation-delay: 760ms; }
+  .reveal-5 { animation-delay: 940ms; }
+  @keyframes v2-kindle {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__halo { opacity: 1; animation: none; }
+    .hero__cue-dot { animation: none; opacity: 1; top: 14px; }
+    .reveal-1, .reveal-2, .reveal-3, .reveal-4, .reveal-5 {
+      opacity: 1; animation: none; clip-path: none; transform: none; filter: none;
+    }
+    .act--invitation::after { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero__names { flex-direction: column; gap: var(--space-1); font-size: clamp(40px, 13vw, 60px); }
+    .hero__amp { font-size: 0.9em; line-height: 0.8; }
+    .hero__date { font-size: var(--fs-body); letter-spacing: 0.05em; }
+    .hero__halo { top: clamp(-34px, -6vw, -18px); width: min(82%, 360px); }
+  }
+
+  @media (max-height: 640px) {
+    .act--invitation {
+      min-height: auto;
+      justify-content: flex-start;
+      padding-block: var(--space-6);
+    }
+    .hero__cue { display: none; }
+  }
+</style>

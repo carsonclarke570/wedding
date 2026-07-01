@@ -5,11 +5,10 @@ import { archBraid } from '../src/lib/knots.mjs';
 import { writeFileSync } from 'node:fs';
 
 const HEX = {
-  '--bg': '#12150F',
-  '--green-300': '#7E9079',
-  '--gold-400': '#D8BC6B',
-  '--gold-500': '#C2A042',
-  '--rose-300': '#B0817A',
+  '--bg': '#121110',
+  '--green-300': '#90A587',
+  '--gold-400': '#CDAA61',
+  '--gold-500': '#B18A44',
 };
 
 const { svg, viewBox, width, height } = archBraid(800, 300);

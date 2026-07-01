@@ -58,7 +58,7 @@ const sets = [
               <div class="framebox__inner">
                 <p class="gg-eyebrow">Together with their families</p>
                 <p class="names">Warren <span class="amp">&amp;</span> Carson</p>
-                <p class="date">The Nineteenth of September · Two Thousand Twenty-Six</p>
+                <p class="date">The Ninth of October · Two Thousand Twenty-Seven</p>
               </div>
             </div>
             <figcaption>Frame</figcaption>
@@ -246,8 +246,8 @@ const sets = [
       const engine = el.dataset.engine;
       svg.innerHTML =
         engine === 'plait'
-          ? plaitFrame(w, h)                                   // engraved style → hex
-          : frameBraid(w, h, { cord: 'var(--metal)', bg: 'var(--bg)' });
+          ? plaitFrame(w, h, { strandProp: 0.35, maxTile: 36 })
+          : frameBraid(w, h, { cord: 'var(--metal)', bg: 'var(--bg)', strandProp: 0.35, maxTile: 36 });
     }
 
     const boxes = document.querySelectorAll<HTMLElement>('[data-engine]');
